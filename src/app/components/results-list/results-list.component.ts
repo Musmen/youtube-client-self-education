@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResultsList } from './results-list.model';
+import { ResponseList } from '../../models/response.model';
 
 @Component({
   selector: 'app-results-list',
@@ -7,7 +7,7 @@ import { ResultsList } from './results-list.model';
   styleUrls: ['./results-list.component.scss']
 })
 export class ResultsListComponent implements OnInit {
-  resultsList : ResultsList;
+  resultsList : ResponseList;
 
   constructor() { }
 

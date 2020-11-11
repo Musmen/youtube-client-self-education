@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResultsItem } from './results-item.model';
+import { ResponseItem } from '../../models/response.model';
 
 @Component({
   selector: 'app-results-item',
@@ -7,7 +7,7 @@ import { ResultsItem } from './results-item.model';
   styleUrls: ['./results-item.component.scss']
 })
 export class ResultsItemComponent implements OnInit {
-  resultsItem: ResultsItem;
+  resultsItem: ResponseItem;
 
   constructor() { }
 

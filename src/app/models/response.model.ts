@@ -1,6 +1,14 @@
-import { Thumbnail } from './thumbnail.model';
+export interface ResponseList {
+  kind: string,
+  etag: string,
+  pageInfo: {
+    totalResults: number,
+    resultsPerPage: number,
+  },
+  items: ResponseItem[],
+}
 
-export interface ResultsItem {
+export interface ResponseItem {
   kind: string,
   etag: string,
   id: string,
@@ -9,13 +17,7 @@ export interface ResultsItem {
     channelId: string,
     title: string,
     description: string,
-    thumbnails: {
-      default: Thumbnail,
-      medium: Thumbnail,
-      high: Thumbnail,
-      standard: Thumbnail,
-      maxres: Thumbnail
-    },
+    thumbnails: Thumbnails,
     channelTitle: string,
     tags: string[],
     categoryId: string,
@@ -34,4 +36,18 @@ export interface ResultsItem {
     favoriteCount: string,
     commentCount: string,
   }
+};
+
+export interface Thumbnails {
+  default: Thumbnail,
+  medium: Thumbnail,
+  high: Thumbnail,
+  standard: Thumbnail,
+  maxres: Thumbnail
+};
+
+export interface Thumbnail {
+  url: string,
+  width: number,
+  height: number
 };

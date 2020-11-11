@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsButtonComponent } from './settings-button.component';
+import { SearchButtonComponent } from './search-button.component';
 
-describe('SettingsButtonComponent', () => {
-  let component: SettingsButtonComponent;
-  let fixture: ComponentFixture<SettingsButtonComponent>;
+describe('SearchButtonComponent', () => {
+  let component: SearchButtonComponent;
+  let fixture: ComponentFixture<SearchButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsButtonComponent ]
+      declarations: [ SearchButtonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsButtonComponent);
+    fixture = TestBed.createComponent(SearchButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
