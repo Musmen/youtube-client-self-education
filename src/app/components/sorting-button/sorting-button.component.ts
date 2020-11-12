@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-sorting-button',
@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SortingButtonComponent implements OnInit {
 
+  @Output() sortingPanelToggleEvent = new EventEmitter<boolean>(false);
+  sortingPanelState : boolean = false;
+
   constructor() { }
+
+  toggleSortingPanel() : void {
+    this.sortingPanelState = !this.sortingPanelState;
+    this.sortingPanelToggleEvent.emit(this.sortingPanelState);
+  }
 
   ngOnInit(): void {
   }

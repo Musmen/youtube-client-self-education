@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sorting-block',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sorting-block.component.scss']
 })
 export class SortingBlockComponent implements OnInit {
+
+  @Input() isSortingPanelOpen: boolean = false;
 
   constructor() { }
 

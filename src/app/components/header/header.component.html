@@ -2,9 +2,8 @@
   <div class="upper-block">
     <app-logo></app-logo>
     <app-search-form></app-search-form>
-    <app-sorting-button></app-sorting-button>
+    <app-sorting-button (sortingPanelToggleEvent)="toggleSortingPanel($event)"></app-sorting-button>
     <app-login></app-login>
   </div>
-
-  <app-sorting-block></app-sorting-block>
+  <app-sorting-block [isSortingPanelOpen]="isSortingPanelOpen"></app-sorting-block>
 </div>
