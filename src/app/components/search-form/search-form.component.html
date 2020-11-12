@@ -1,1 +1,12 @@
-<p>search-form works!</p>
+<form class="search-form" name="search-form">
+  <label class="search-form-input-label">
+    <input class="search-form-input" type="text" [(ngModel)]="searchRequest" name="search-form-input"
+    placeholder="What are you want to find out?">
+    <button class="clear-button" mat-button aria-label="Clear" *ngIf="searchRequest" type="button" (click)="searchRequest=''">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </label>
+  <button class="button shadow search-button main-bg-color" mat-button aria-label="Search" type="submit">
+    search
+  </button>
+</form>

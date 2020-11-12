@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex; /* Посмотреть как использовать миксины в Ангуляре */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: cadetblue;
+}
+
+.upper-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  background-color: lightgray;
+
+  * {
+   margin: 10px;
+  }
+}
