@@ -7,9 +7,14 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
-  @Input() searchRequest = '';
+  @Input() searchRequest : string = '';
+  @Output() searchRequestEnterEvent = new EventEmitter<string>();
 
   constructor() { }
+
+  searchFormSubmit() : void {
+    if (this.searchRequest) this.searchRequestEnterEvent.emit(this.searchRequest);
+  }
 
   ngOnInit(): void {
   }

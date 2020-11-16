@@ -1,6 +1,6 @@
 import { ResponseList } from '../app/models/response.model';
 
-export const RESULTS : ResponseList = {
+export const YOU_TUBE_RESPONSE : ResponseList = {
   "kind": "youtube#videoListResponse",
   "etag": "\"Fznwjl6JEQdo1MGvHOGaz_YanRU/Cmodw7c5XPTM8Yg3kMXelihxek4\"",
   "pageInfo": {

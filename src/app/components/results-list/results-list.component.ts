@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ResponseList } from '../../models/response.model';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { ResponseList, ResponseItem } from '../../models/response.model';
 
 @Component({
   selector: 'app-results-list',
@@ -7,10 +7,15 @@ import { ResponseList } from '../../models/response.model';
   styleUrls: ['./results-list.component.scss']
 })
 export class ResultsListComponent implements OnInit {
-  resultsList : ResponseList;
+  @Input() searchResult : ResponseList;
+  searchItems : ResponseItem[];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.searchResult.currentValue) this.searchItems = changes.searchResult.currentValue.items;
   }
 }

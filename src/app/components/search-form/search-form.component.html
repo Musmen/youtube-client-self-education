@@ -1,7 +1,7 @@
-<form class="search-form" name="search-form">
+<form class="search-form" name="search-form" (submit)="searchFormSubmit()">
   <label class="search-form-input-label">
     <input class="search-form-input" type="text" [(ngModel)]="searchRequest" name="search-form-input"
-    placeholder="What are you want to find out?">
+      placeholder="What are you want to find out?">
     <button class="clear-button" mat-button aria-label="Clear" *ngIf="searchRequest" type="button" (click)="searchRequest=''">
       <mat-icon>clear</mat-icon>
     </button>

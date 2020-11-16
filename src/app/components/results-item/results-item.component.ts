@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ResponseItem } from '../../models/response.model';
 
 @Component({
@@ -7,7 +7,7 @@ import { ResponseItem } from '../../models/response.model';
   styleUrls: ['./results-item.component.scss']
 })
 export class ResultsItemComponent implements OnInit {
-  resultsItem: ResponseItem;
+  @Input() searchItem : ResponseItem;
 
   constructor() { }
 
