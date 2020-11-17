@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import './scss/normalize.scss';
 
+.centralizer {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .visually-hidden {
 	position: absolute !important;
 	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
@@ -29,4 +34,10 @@ body {
 
 .shadow {
   box-shadow: 2px 0px 4px 0px #2F80ED;
+}
+
+.none-style {
+  padding: 0;
+
+  list-style: none;
 }

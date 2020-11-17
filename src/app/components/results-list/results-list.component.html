@@ -1,7 +1,5 @@
-<ul>
-  <ng-container *ngIf="searchItems">
-    <li *ngFor="let searchItem of searchItems">
-      <app-results-item [searchItem]="searchItem"></app-results-item>
-    </li>
-  </ng-container>
+<ul class="search-results-list none-style centralizer">
+  <li class="search-results-item" *ngFor="let searchResultItem of searchResultItems">
+    <app-results-item [searchResultItem]="searchResultItem"></app-results-item>
+  </li>
 </ul>

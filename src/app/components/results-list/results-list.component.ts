@@ -8,7 +8,7 @@ import { ResponseList, ResponseItem } from '../../models/response.model';
 })
 export class ResultsListComponent implements OnInit {
   @Input() searchResult : ResponseList;
-  searchItems : ResponseItem[];
+  searchResultItems : ResponseItem[];
 
   constructor() { }
 
@@ -16,6 +16,6 @@ export class ResultsListComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.searchResult.currentValue) this.searchItems = changes.searchResult.currentValue.items;
+    if (changes.searchResult.currentValue) this.searchResultItems = changes.searchResult.currentValue.items;
   }
 }
