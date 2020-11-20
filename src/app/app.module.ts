@@ -18,6 +18,7 @@ import { SortingBlockComponent } from './components/sorting-block/sorting-block.
 import { ResultsListComponent } from './components/results-list/results-list.component';
 import { ResultsItemComponent } from './components/results-item/results-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BottomBorderColorizerDirective } from './directives/bottom-border-colorizer.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     SortingBlockComponent,
     ResultsListComponent,
-    ResultsItemComponent
+    ResultsItemComponent,
+    BottomBorderColorizerDirective
   ],
   imports: [
     FormsModule,
