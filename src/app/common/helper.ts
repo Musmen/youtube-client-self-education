@@ -12,9 +12,9 @@ const MILLISECONDS_IN_ONE_MONTH: number = MILLISECONDS_IN_ONE_DAY * DAYS_IN_ONE_
 const MILLISECONDS_IN_SIX_MONTHS: number = MILLISECONDS_IN_ONE_MONTH * 6;
 
 enum ColorSetByPostDate {
-  weekly = '#0000FF',
-  monthly = ' #008000',
-  old = ' #FF0000',
+  weekly = '#2F80ED',
+  monthly = '#27AE60',
+  old = '#EB5757',
   default = '#F2C94C'
 }
 
