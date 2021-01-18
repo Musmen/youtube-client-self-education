@@ -19,6 +19,8 @@ import { ResultsListComponent } from './components/results-list/results-list.com
 import { ResultsItemComponent } from './components/results-item/results-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BottomBorderColorizerDirective } from './directives/bottom-border-colorizer.directive';
+import { SortingSearchResultsDirective } from './directives/sorting-search-results.directive';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { BottomBorderColorizerDirective } from './directives/bottom-border-color
     SortingBlockComponent,
     ResultsListComponent,
     ResultsItemComponent,
-    BottomBorderColorizerDirective
+    BottomBorderColorizerDirective,
+    SortingSearchResultsDirective,
+    ErrorMessageComponent
   ],
   imports: [
     FormsModule,

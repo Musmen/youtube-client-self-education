@@ -1,9 +1,24 @@
 <div class="wrapper">
+
   <div class="upper-block">
+
     <app-logo></app-logo>
-    <app-search-form (searchRequestEnterEvent)="setSearchRequest($event)"></app-search-form>
-    <app-sorting-button (sortingPanelToggleEvent)="toggleSortingPanel($event)"></app-sorting-button>
+
+    <app-search-form
+      (searchRequestEnterEvent)="setSearchRequest($event)">
+    </app-search-form>
+
+    <app-sorting-button
+      (sortingPanelToggleEvent)="toggleSortingPanel($event)">
+    </app-sorting-button>
+
     <app-login></app-login>
+
   </div>
-  <app-sorting-block [isSortingPanelOpen]="isSortingPanelOpen"></app-sorting-block>
+
+  <app-sorting-block
+    [isSortingPanelOpen]="isSortingPanelOpen"
+    (sortingRequestEnterEvent)="setSortingRequest($event)">
+  </app-sorting-block>
+
 </div>

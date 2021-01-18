@@ -4,14 +4,16 @@
 
     <ul class="sorting-criteria-list none-style">
       <li class="sorting-criteria-item">
-        <a class="sorting-criteria-link" href="#">date</a>
+        <a class="sorting-criteria-link" href="#" [appSortingSearchResults]="'date'">date</a>
+        <!-- !!! нужно ли событие по клику для этих ссылок? -->
       </li>
       <li class="sorting-criteria-item">
-        <a class="sorting-criteria-link" href="#">count of views</a>
+        <a class="sorting-criteria-link" href="#" [appSortingSearchResults]="'viewsCount'">count of views</a>
+        <!-- !!! нужно ли событие по клику для этих ссылок? -->
       </li>
     </ul>
 
-    <form class="sorting-form" name="sorting-form" >
+    <form class="sorting-form" name="sorting-form" (submit)="sortingFormSubmit()">
       <label class="sorting-form-input-label">
         <span class="sorting-form-input-label-title">by word or sentence</span>
         <input class="sorting-form-input" type="text" name="sorting-sentence" [(ngModel)]="sortingRequest">

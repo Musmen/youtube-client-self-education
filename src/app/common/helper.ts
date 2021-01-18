@@ -27,3 +27,7 @@ export let getBottomBorderColor = (postDate): string => {
 
   return ColorSetByPostDate.default;
 }
+
+export const ERROR_MESSAGES = {
+  SEARCH_REQUEST: 'Please, enter valid search request',
+}

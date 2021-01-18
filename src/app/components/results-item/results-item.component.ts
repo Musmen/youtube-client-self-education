@@ -10,7 +10,6 @@ enum LabelsIcons {
   comments = 'chat',
 }
 
-
 @Component({
   selector: 'app-results-item',
   templateUrl: './results-item.component.html',

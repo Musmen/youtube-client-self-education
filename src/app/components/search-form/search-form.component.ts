@@ -13,6 +13,7 @@ export class SearchFormComponent {
   constructor() { }
 
   searchFormSubmit() : void {
-    if (this.searchRequest) this.searchRequestEnterEvent.emit(this.searchRequest);
+    // if (this.searchRequest) this.searchRequestEnterEvent.emit(this.searchRequest);
+    this.searchRequestEnterEvent.emit(this.searchRequest);
   }
 }

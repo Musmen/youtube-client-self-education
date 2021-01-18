@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { ResponseList, ResponseItem } from '../../models/response.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { ResponseList, ResponseItem } from '../../models/response.model';
   templateUrl: './results-list.component.html',
   styleUrls: ['./results-list.component.scss']
 })
-export class ResultsListComponent implements OnInit {
+export class ResultsListComponent implements OnInit, OnChanges {
   @Input() searchResult : ResponseList;
   searchResultItems : ResponseItem[];
 

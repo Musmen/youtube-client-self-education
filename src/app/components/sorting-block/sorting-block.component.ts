@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-sorting-block',
@@ -9,6 +9,11 @@ export class SortingBlockComponent {
 
   @Input() isSortingPanelOpen: boolean = false;
   @Input() sortingRequest: string = '';
+  @Output() sortingRequestEnterEvent = new EventEmitter<string>();
 
   constructor() { }
+
+  sortingFormSubmit() : void {
+    if (this.sortingRequest) this.sortingRequestEnterEvent.emit(this.sortingRequest);
+  }
 }
