@@ -4,7 +4,7 @@ import { ResponseList } from '../app/models/response.model';
 
 import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
 
-import { ERROR_MESSAGES, getViewCountNumber, getDateNumber } from './common/helper';
+import { ERROR_MESSAGES, getViewCountNumber, getDateNumber, sortingBy } from './common/helper';
 
 @Component({
   selector: 'app-root',
@@ -45,22 +45,30 @@ export class AppComponent {
   }
 
   sortingByViews(sortingOder: boolean): void {
-    if (!this.searchResult) return;
-
-    this.searchResult.items = this.searchResult.items
-      .sort((firstItem, secondItem): number => sortingOder
-        ? getViewCountNumber(firstItem) - getViewCountNumber(secondItem)
-        : getViewCountNumber(secondItem) - getViewCountNumber(firstItem)
-      );
+    this.searchResult = sortingBy<ResponseList>(this.searchResult, getViewCountNumber, sortingOder)
   }
 
   sortingByDate(sortingOder: boolean): void {
-    if (!this.searchResult) return;
-
-    this.searchResult.items = this.searchResult.items
-      .sort((firstItem, secondItem): number => sortingOder
-        ? getDateNumber(firstItem) - getDateNumber(secondItem)
-        : getDateNumber(secondItem) - getDateNumber(firstItem)
-      );
+    this.searchResult = sortingBy<ResponseList>(this.searchResult, getDateNumber, sortingOder)
   }
+
+  // sortingByViews(sortingOder: boolean): void {
+  //   if (!this.searchResult) return;
+
+  //   this.searchResult.items = this.searchResult.items
+  //     .sort((firstItem, secondItem): number => sortingOder
+  //       ? getViewCountNumber(firstItem) - getViewCountNumber(secondItem)
+  //       : getViewCountNumber(secondItem) - getViewCountNumber(firstItem)
+  //     );
+  // }
+
+  // sortingByDate(sortingOder: boolean): void {
+  //   if (!this.searchResult) return;
+
+  //   this.searchResult.items = this.searchResult.items
+  //     .sort((firstItem, secondItem): number => sortingOder
+  //       ? getDateNumber(firstItem) - getDateNumber(secondItem)
+  //       : getDateNumber(secondItem) - getDateNumber(firstItem)
+  //     );
+  // }
 }

@@ -34,3 +34,22 @@ export const ERROR_MESSAGES = {
 
 export const getViewCountNumber = (item): number => Number(item.statistics.viewCount);
 export const getDateNumber = (item): number => Number(new Date(item.snippet.publishedAt).getTime());
+
+export const sortingBy = <T>(
+  inputData: T,
+  getSortBaseMethod: (item: string) => number,
+  sortingOder: boolean,
+): T | undefined => {
+  if (!inputData|| !inputData['items']) return;
+
+  inputData['items'] = inputData['items']
+    .sort((firstItem, secondItem): number => sortingOder
+      ? getSortBaseMethod(firstItem) - getSortBaseMethod(secondItem)
+      : getSortBaseMethod(secondItem) - getSortBaseMethod(firstItem)
+    );
+
+  return inputData;
+}
+
+
+
