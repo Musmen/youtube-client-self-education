@@ -19,7 +19,7 @@ import { ResultsListComponent } from './components/results-list/results-list.com
 import { ResultsItemComponent } from './components/results-item/results-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BottomBorderColorizerDirective } from './directives/bottom-border-colorizer.directive';
-import { SortingSearchResultsDirective } from './directives/sorting-search-results.directive';
+import { ChangeSortingOrderDirective } from './directives/change-sorting-order.directive';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 @NgModule({
@@ -34,7 +34,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ResultsListComponent,
     ResultsItemComponent,
     BottomBorderColorizerDirective,
-    SortingSearchResultsDirective,
+    ChangeSortingOrderDirective,
     ErrorMessageComponent
   ],
   imports: [

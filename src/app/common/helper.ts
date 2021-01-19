@@ -31,3 +31,6 @@ export let getBottomBorderColor = (postDate): string => {
 export const ERROR_MESSAGES = {
   SEARCH_REQUEST: 'Please, enter valid search request',
 }
+
+export const getViewCountNumber = (item): number => Number(item.statistics.viewCount);
+export const getDateNumber = (item): number => Number(new Date(item.snippet.publishedAt).getTime());

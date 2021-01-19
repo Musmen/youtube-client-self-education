@@ -32,7 +32,23 @@
 }
 
 .sorting-criteria-link {
+  display: inline-flex;
+  align-items: center;
+
   color: #2F80ED;
+  text-decoration: none;
+}
+
+.sorting-direction-icon {
+  transition: transform 0.6s;
+}
+
+.increasing .sorting-direction-icon {
+    transform: rotate(-180deg);
+  }
+
+.text-underline {
+  text-decoration: underline;
 }
 
 .sorting-form-input-label {

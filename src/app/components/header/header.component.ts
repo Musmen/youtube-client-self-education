@@ -9,22 +9,34 @@ export class HeaderComponent {
   @Input() isSortingPanelOpen: boolean = false;
   @Input() searchRequest: string = '';
   @Input() sortingRequest: string = '';
+
   @Output() startSearchEvent = new EventEmitter<string>();
-  @Output() startSortEvent = new EventEmitter<string>();
+
+  @Output() sortingByKeyWordsEvent = new EventEmitter<string>();
+  @Output() sortingByViewsEvent = new EventEmitter<boolean>();
+  @Output() sortingByDateEvent = new EventEmitter<boolean>();
 
   constructor() { }
 
-  toggleSortingPanel(sortingPanelState : boolean) : void {
+  toggleSortingPanel(sortingPanelState: boolean): void {
     this.isSortingPanelOpen = sortingPanelState;
   }
 
-  setSearchRequest(searchRequest : string) : void {
+  setSearchRequest(searchRequest: string): void {
     this.searchRequest = searchRequest;
     this.startSearchEvent.emit(this.searchRequest);
   }
 
-  setSortingRequest(sortingRequest : string) : void {
+  sortingByKeyWords(sortingRequest: string): void {
     this.sortingRequest = sortingRequest;
-    this.startSortEvent.emit(this.sortingRequest);
+    this.sortingByKeyWordsEvent.emit(this.sortingRequest);
+  }
+
+  sortingByViews(sortingOder: boolean): void {
+    this.sortingByViewsEvent.emit(sortingOder);
+  }
+
+  sortingByDate(sortingOder: boolean): void {
+    this.sortingByDateEvent.emit(sortingOder);
   }
 }

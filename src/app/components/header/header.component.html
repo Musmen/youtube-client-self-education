@@ -18,7 +18,9 @@
 
   <app-sorting-block
     [isSortingPanelOpen]="isSortingPanelOpen"
-    (sortingRequestEnterEvent)="setSortingRequest($event)">
+    (sortingByKeyWordsEvent)="sortingByKeyWords($event)"
+    (sortingByViewsEvent)="sortingByViews($event)"
+    (sortingByDateEvent)="sortingByDate($event)">
   </app-sorting-block>
 
 </div>

@@ -1,17 +1,24 @@
 <div class="search-card" [appBottomBorderColorizer]="searchResultCard.date">
   <img class="search-card__poster" src="{{ searchResultCard.posterUrl }}">
+
   <ul class="search-card__statistics_list none-style">
-    <li class="search-card__statistics_item" *ngFor="let statisticItemLabel of STATISTIC_ITEMS_LABELS">
-      <span class="statistics__icon icon_{{ statisticItemLabel }}">
-        <mat-icon>{{ LabelsIcons[statisticItemLabel] }}</mat-icon>
-      </span>
-      <span class="statistics__count count_{{ statisticItemLabel }}">
-        {{ searchResultCard[statisticItemLabel] }}
-      </span>
+    <li class="search-card__statistics_item"
+      *ngFor="let statisticItemLabel of STATISTIC_ITEMS_LABELS">
+        <span class="statistics__icon icon_{{ statisticItemLabel }}">
+          <mat-icon>{{ LabelsIcons[statisticItemLabel] }}</mat-icon>
+        </span>
+        <span class="statistics__count count_{{ statisticItemLabel }}">
+          {{ searchResultCard[statisticItemLabel] }}
+        </span>
     </li>
   </ul>
+
   <h2 class="search-card__title">{{ searchResultCard.title }}</h2>
+
   <button class="button shadow search-card__button_more main-bg-color" mat-button aria-label="Additional information">
     more...
   </button>
+
+  <span>{{ searchResultCard.date }}</span>
+
 </div>

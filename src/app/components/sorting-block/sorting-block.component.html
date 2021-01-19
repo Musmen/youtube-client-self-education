@@ -4,12 +4,25 @@
 
     <ul class="sorting-criteria-list none-style">
       <li class="sorting-criteria-item">
-        <a class="sorting-criteria-link" href="#" [appSortingSearchResults]="'date'">date</a>
-        <!-- !!! нужно ли событие по клику для этих ссылок? -->
+        <a
+          class="sorting-criteria-link"
+          href="#"
+          appChangeSortingOrder
+          (changeSortingDirectionEvent)="sortByDate($event)">
+          <span class="text-underline">date</span>
+          <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
+        </a>
       </li>
+
       <li class="sorting-criteria-item">
-        <a class="sorting-criteria-link" href="#" [appSortingSearchResults]="'viewsCount'">count of views</a>
-        <!-- !!! нужно ли событие по клику для этих ссылок? -->
+        <a
+          class="sorting-criteria-link"
+          href="#"
+          appChangeSortingOrder
+          (changeSortingDirectionEvent)="sortByViews($event)">
+          <span class="text-underline">count of views</span>
+          <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
+        </a>
       </li>
     </ul>
 

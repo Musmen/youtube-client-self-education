@@ -5,16 +5,14 @@
       type="text"
       name="search-form-input"
       placeholder="What are you want to find out?"
-      [(ngModel)]="searchRequest"
-    >
+      [(ngModel)]="searchRequest">
     <button
       class="clear-button"
       type="button"
       aria-label="Clear"
       mat-button
       *ngIf="searchRequest"
-      (click)="searchRequest=''"
-    >
+      (click)="searchRequest=''">
       <mat-icon>clear</mat-icon>
     </button>
   </label>
@@ -22,8 +20,7 @@
     class="button shadow search-button main-bg-color"
     type="submit"
     aria-label="Search"
-    mat-button
-  >
+    mat-button>
     search
   </button>
 </form>

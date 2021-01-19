@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+
 import { ResponseList } from '../app/models/response.model';
+
 import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
 
-import { ERROR_MESSAGES } from './common/helper';
+import { ERROR_MESSAGES, getViewCountNumber, getDateNumber } from './common/helper';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,10 @@ export class AppComponent {
 
   constructor() { }
 
+  fetchYouTube(searchRequest : string) : ResponseList {
+    if (searchRequest) return YOU_TUBE_RESPONSE;
+  }
+
   startSearch(searchRequest : string) : void {
     this.searchRequest = searchRequest;
 
@@ -33,12 +39,28 @@ export class AppComponent {
     this.searchResult = this.fetchYouTube(searchRequest);
   }
 
-  startSort(sortRequest : string) : void {
+  sortingByKeyWords(sortRequest : string) : void {
     this.sortRequest = sortRequest;
     // this.searchResult = this.fetchYouTube(searchRequest); // !!! todo тут и нужно реализовать алгоритм для сортировки, может направление для пайпа и т.д.
   }
 
-  fetchYouTube(searchRequest : string) : ResponseList {
-    if (searchRequest) return YOU_TUBE_RESPONSE;
+  sortingByViews(sortingOder: boolean): void {
+    if (!this.searchResult) return;
+
+    this.searchResult.items = this.searchResult.items
+      .sort((firstItem, secondItem): number => sortingOder
+        ? getViewCountNumber(firstItem) - getViewCountNumber(secondItem)
+        : getViewCountNumber(secondItem) - getViewCountNumber(firstItem)
+      );
+  }
+
+  sortingByDate(sortingOder: boolean): void {
+    if (!this.searchResult) return;
+
+    this.searchResult.items = this.searchResult.items
+      .sort((firstItem, secondItem): number => sortingOder
+        ? getDateNumber(firstItem) - getDateNumber(secondItem)
+        : getDateNumber(secondItem) - getDateNumber(firstItem)
+      );
   }
 }

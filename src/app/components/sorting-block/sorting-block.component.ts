@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sorting-block',
@@ -9,11 +9,22 @@ export class SortingBlockComponent {
 
   @Input() isSortingPanelOpen: boolean = false;
   @Input() sortingRequest: string = '';
-  @Output() sortingRequestEnterEvent = new EventEmitter<string>();
+
+  @Output() sortingByKeyWordsEvent = new EventEmitter<string>();
+  @Output() sortingByViewsEvent = new EventEmitter<boolean>();
+  @Output() sortingByDateEvent = new EventEmitter<boolean>();
 
   constructor() { }
 
-  sortingFormSubmit() : void {
-    if (this.sortingRequest) this.sortingRequestEnterEvent.emit(this.sortingRequest);
+  sortingFormSubmit(): void {
+    if (this.sortingRequest) this.sortingByKeyWordsEvent.emit(this.sortingRequest);
+  }
+
+  sortByViews(sortingOrder: boolean): void {
+    this.sortingByViewsEvent.emit(sortingOrder);
+  }
+
+  sortByDate(sortingOrder: boolean): void {
+    this.sortingByDateEvent.emit(sortingOrder);
   }
 }
