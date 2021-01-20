@@ -26,11 +26,11 @@
       </li>
     </ul>
 
-    <form class="sorting-form" name="sorting-form" (submit)="sortingFormSubmit()">
-      <label class="sorting-form-input-label">
-        <span class="sorting-form-input-label-title">by word or sentence</span>
-        <input class="sorting-form-input" type="text" name="sorting-sentence" [(ngModel)]="sortingRequest">
-        <button class="clear-button" mat-button aria-label="Clear" *ngIf="sortingRequest" type="button" (click)="sortingRequest=''">
+    <form class="filtering-form" name="filtering-form" (submit)="filteringFormSubmit()">
+      <label class="filtering-form-input-label">
+        <span class="filtering-form-input-label-title">by word or sentence</span>
+        <input class="filtering-form-input" type="text" name="filtering-sentence" [(ngModel)]="filteringRequest">
+        <button class="clear-button" mat-button aria-label="Clear" *ngIf="filteringRequest" type="button" (click)="filteringRequest=''">
           <mat-icon>clear</mat-icon>
         </button>
       </label>

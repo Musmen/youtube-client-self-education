@@ -42,11 +42,11 @@ export const sortingBy = <T>(
 ): T | undefined => {
   if (!inputData|| !inputData['items']) return;
 
-  inputData['items'] = inputData['items']
-    .sort((firstItem, secondItem): number => sortingOder
-      ? getSortBaseMethod(firstItem) - getSortBaseMethod(secondItem)
-      : getSortBaseMethod(secondItem) - getSortBaseMethod(firstItem)
-    );
+  inputData['items'] = [...inputData['items']
+  .sort((firstItem, secondItem): number => sortingOder
+    ? getSortBaseMethod(firstItem) - getSortBaseMethod(secondItem)
+    : getSortBaseMethod(secondItem) - getSortBaseMethod(firstItem)
+  )];
 
   return inputData;
 }

@@ -4,12 +4,11 @@ import { Directive, HostListener, Output, EventEmitter, HostBinding} from '@angu
   selector: '[appChangeSortingOrder]'
 })
 export class ChangeSortingOrderDirective {
+  @Output() changeSortingDirectionEvent = new EventEmitter<boolean>();
 
   sortingDirection: boolean = false;
 
   constructor() { }
-
-  @Output() changeSortingDirectionEvent = new EventEmitter<boolean>();
 
   @HostListener('click') onMouseClick(): void {
     this.sortingDirection = !this.sortingDirection;

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BottomBorderColorizerDirective } from './directives/bottom-border-colorizer.directive';
 import { ChangeSortingOrderDirective } from './directives/change-sorting-order.directive';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { FilterByKeyWordsPipe } from './pipes/filter-by-key-words.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ResultsItemComponent,
     BottomBorderColorizerDirective,
     ChangeSortingOrderDirective,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    FilterByKeyWordsPipe
   ],
   imports: [
     FormsModule,

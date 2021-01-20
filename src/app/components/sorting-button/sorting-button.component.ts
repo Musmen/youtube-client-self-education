@@ -6,8 +6,8 @@ import { Component, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./sorting-button.component.scss']
 })
 export class SortingButtonComponent {
-
   @Output() sortingPanelToggleEvent = new EventEmitter<boolean>(false);
+
   sortingPanelState : boolean = false;
 
   constructor() { }

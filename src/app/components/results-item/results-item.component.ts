@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ResponseItem } from '../../models/response.model';
 import { SearchResultCard } from '../../models/searchResultCard.model';
 
 const STATISTIC_ITEMS_LABELS : string[] = ['views', 'likes', 'dislikes', 'comments'];
+
 enum LabelsIcons {
   views = 'visibility',
   likes = 'favorite',
@@ -15,7 +16,7 @@ enum LabelsIcons {
   templateUrl: './results-item.component.html',
   styleUrls: ['./results-item.component.scss']
 })
-export class ResultsItemComponent implements OnInit, OnChanges {
+export class ResultsItemComponent implements OnChanges {
   searchResultCard: SearchResultCard = {
     posterUrl: '',
     views: 0,
@@ -32,9 +33,6 @@ export class ResultsItemComponent implements OnInit, OnChanges {
   @Input() searchResultItem : ResponseItem;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     let currentSearchResultItem = changes.searchResultItem.currentValue;

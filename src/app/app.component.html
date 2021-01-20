@@ -1,11 +1,12 @@
 <app-header
   (startSearchEvent)="startSearch($event)"
-  (sortingByKeyWordsEvent)="sortingByKeyWords($event)"
+  (filteringByKeyWordsEvent)="filteringByKeyWords($event)"
   (sortingByViewsEvent)="sortingByViews($event)"
   (sortingByDateEvent)="sortingByDate($event)"
 >
 </app-header>
 <app-results-list
+  [filteringRequest]="filteringRequest"
   [searchResult]="searchResult"
   *ngIf="!searchRequestError; else errorMessageTemplate">
 </app-results-list>

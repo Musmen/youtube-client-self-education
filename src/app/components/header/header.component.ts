@@ -8,11 +8,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent {
   @Input() isSortingPanelOpen: boolean = false;
   @Input() searchRequest: string = '';
-  @Input() sortingRequest: string = '';
+  @Input() filteringRequest: string = '';
 
   @Output() startSearchEvent = new EventEmitter<string>();
 
-  @Output() sortingByKeyWordsEvent = new EventEmitter<string>();
+  @Output() filteringByKeyWordsEvent = new EventEmitter<string>();
+
   @Output() sortingByViewsEvent = new EventEmitter<boolean>();
   @Output() sortingByDateEvent = new EventEmitter<boolean>();
 
@@ -27,9 +28,9 @@ export class HeaderComponent {
     this.startSearchEvent.emit(this.searchRequest);
   }
 
-  sortingByKeyWords(sortingRequest: string): void {
-    this.sortingRequest = sortingRequest;
-    this.sortingByKeyWordsEvent.emit(this.sortingRequest);
+  filteringByKeyWords(filteringRequest: string): void {
+    this.filteringRequest = filteringRequest;
+    this.filteringByKeyWordsEvent.emit(this.filteringRequest);
   }
 
   sortingByViews(sortingOder: boolean): void {
