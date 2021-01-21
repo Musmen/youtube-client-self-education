@@ -16,7 +16,8 @@ export class SortingBlockComponent {
 
   constructor() { }
 
-  public filteringFormSubmit(): void {
+  public changeFilteringRequest(filteringRequest): void {
+    this.filteringRequest = filteringRequest;
     this.filteringByKeyWordsEvent.emit(this.filteringRequest);
   }
 

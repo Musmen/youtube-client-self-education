@@ -28,7 +28,7 @@
       </li>
     </ul>
 
-    <form class="filtering-form" name="filtering-form" (submit)="filteringFormSubmit()">
+    <form class="filtering-form" name="filtering-form">
       <label class="filtering-form-input-label">
         <span class="filtering-form-input-label-title">by word or sentence</span>
         <input
@@ -36,6 +36,7 @@
           type="text"
           name="filtering-sentence"
           [(ngModel)]="filteringRequest"
+          (ngModelChange)="changeFilteringRequest($event)"
         >
         <button
           class="clear-button"
@@ -43,7 +44,7 @@
           aria-label="Clear filter request"
           mat-button
           *ngIf="filteringRequest"
-          (click)="filteringRequest=''"
+          (click)="changeFilteringRequest('')"
         >
           <mat-icon>clear</mat-icon>
         </button>
