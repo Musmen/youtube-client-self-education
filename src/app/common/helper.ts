@@ -1,9 +1,17 @@
-const MILLISECONDS_IN_ONE_SECOND: number = 1000;
-const SECONDS_IN_ONE_MINUTE: number = 60;
-const MINUTES_IN_ONE_HOUR: number = 60;
-const HOURS_IN_ONE_DAY: number = 24;
-const DAYS_IN_ONE_WEEK: number = 7;
-const DAYS_IN_ONE_MONTH: number = 30;
+import { ResponseList } from '../../app/models/response.model';
+
+let MILLISECONDS_IN_ONE_SECOND: number;
+MILLISECONDS_IN_ONE_SECOND = 1000;
+let SECONDS_IN_ONE_MINUTE: number;
+SECONDS_IN_ONE_MINUTE = 60;
+let MINUTES_IN_ONE_HOUR: number;
+MINUTES_IN_ONE_HOUR = 60;
+let HOURS_IN_ONE_DAY: number;
+HOURS_IN_ONE_DAY = 24;
+let DAYS_IN_ONE_WEEK: number;
+DAYS_IN_ONE_WEEK = 7;
+let DAYS_IN_ONE_MONTH: number;
+DAYS_IN_ONE_MONTH = 30;
 
 const MILLISECONDS_IN_ONE_DAY: number = MILLISECONDS_IN_ONE_SECOND * SECONDS_IN_ONE_MINUTE
   * MINUTES_IN_ONE_HOUR * HOURS_IN_ONE_DAY;
@@ -18,41 +26,65 @@ enum ColorSetByPostDate {
   default = '#F2C94C'
 }
 
-export let getBottomBorderColor = (postDate): string => {
-  let passedMilliseconds = Date.now() - new Date(postDate).getTime();
+export let getBottomBorderColor: (postDate: string) => string = (postDate) => {
+  let passedMilliseconds: number = Date.now() - new Date(postDate).getTime();
 
-  if (passedMilliseconds < MILLISECONDS_IN_ONE_WEEK) return ColorSetByPostDate.weekly;
-  if (passedMilliseconds < MILLISECONDS_IN_ONE_MONTH) return ColorSetByPostDate.monthly;
-  if (passedMilliseconds > MILLISECONDS_IN_SIX_MONTHS) return ColorSetByPostDate.old;
+  if (passedMilliseconds < MILLISECONDS_IN_ONE_WEEK) {
+    return ColorSetByPostDate.weekly;
+  }
+  if (passedMilliseconds < MILLISECONDS_IN_ONE_MONTH) {
+    return ColorSetByPostDate.monthly;
+  }
+  if (passedMilliseconds > MILLISECONDS_IN_SIX_MONTHS) {
+    return ColorSetByPostDate.old;
+  }
 
   return ColorSetByPostDate.default;
-}
+};
 
-export const ERROR_MESSAGES = {
+export const ERROR_MESSAGES: {} = {
   SEARCH_REQUEST: 'Please, enter valid search request',
-}
+};
 
-export const getLowerCaseTrimmedString = (inputString: string): string => String(inputString)
-  .toLowerCase().trim();
+export const getLowerCaseTrimmedString: (inputString: string) => string
+  = (inputString: string) => String(inputString).toLowerCase().trim();
 
-export const getViewCountNumber = (item): number => Number(item.statistics.viewCount);
-export const getDateNumber = (item): number => Number(new Date(item.snippet.publishedAt).getTime());
+type viewCountStatistic = {
+  statistics: {
+    viewCount: string,
+  },
+};
+export const getViewCountNumber: (item: viewCountStatistic) => number
+  = (item: viewCountStatistic) => Number(item.statistics.viewCount);
 
-export const sortingBy = <T>(
-  inputData: T,
-  getSortBaseMethod: (item: string) => number,
-  sortingOder: boolean,
-): T | undefined => {
-  if (!inputData|| !inputData['items']) return;
+type publishedAtSnippet = {
+  snippet: {
+    publishedAt: string,
+  },
+};
+export const getDateNumber: (item: publishedAtSnippet) => number
+  = (item: publishedAtSnippet) => Number(new Date(item.snippet.publishedAt).getTime());
 
-  inputData['items'] = [...inputData['items']
-  .sort((firstItem, secondItem): number => sortingOder
-    ? getSortBaseMethod(firstItem) - getSortBaseMethod(secondItem)
-    : getSortBaseMethod(secondItem) - getSortBaseMethod(firstItem)
-  )];
+export const sortingBy: (
+    inputData: ResponseList,
+    getSortBaseMethod: (item: viewCountStatistic | publishedAtSnippet) => number,
+    sortingOder: boolean,
+  ) => ResponseList | undefined = (
+    inputData: ResponseList,
+    getSortBaseMethod: (item: viewCountStatistic | publishedAtSnippet) => number,
+    sortingOder: boolean,
+  ) => {
+  if (!inputData || !inputData.items) {
+    return;
+  }
+
+  inputData.items = Array.from(
+    inputData.items
+      .sort((firstItem, secondItem): number => sortingOder
+        ? getSortBaseMethod(firstItem) - getSortBaseMethod(secondItem)
+        : getSortBaseMethod(secondItem) - getSortBaseMethod(firstItem)
+      )
+  );
 
   return inputData;
-}
-
-
-
+};

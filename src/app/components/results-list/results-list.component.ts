@@ -7,8 +7,8 @@ import { ResponseList } from '../../models/response.model';
   styleUrls: ['./results-list.component.scss']
 })
 export class ResultsListComponent {
-  @Input() public searchResult : ResponseList;
-  @Input() public filteringRequest : string;
+  @Input() public searchResult: ResponseList;
+  @Input() public filteringRequest: string;
 
   constructor() { }
 }

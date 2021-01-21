@@ -36,7 +36,7 @@
           type="text"
           name="filtering-sentence"
           [(ngModel)]="filteringRequest"
-          (ngModelChange)="changeFilteringRequest($event)"
+          (ngModelChange)="changeFilteringRequest()"
         >
         <button
           class="clear-button"
@@ -44,7 +44,7 @@
           aria-label="Clear filter request"
           mat-button
           *ngIf="filteringRequest"
-          (click)="changeFilteringRequest('')"
+          (click)="filteringRequest=''; changeFilteringRequest()"
         >
           <mat-icon>clear</mat-icon>
         </button>

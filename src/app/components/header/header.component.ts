@@ -8,12 +8,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent {
   @Input() public isSortingPanelOpen: boolean = false;
 
-  @Output() public startSearchEvent = new EventEmitter<string>();
+  @Output() public startSearchEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output() public filteringByKeyWordsEvent = new EventEmitter<string>();
+  @Output() public filteringByKeyWordsEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output() public sortingByViewsEvent = new EventEmitter<boolean>();
-  @Output() public sortingByDateEvent = new EventEmitter<boolean>();
+  @Output() public sortingByViewsEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public sortingByDateEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 

@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SearchFormComponent {
   @Input() public searchRequest: string = '';
-  @Output() public searchRequestEnterEvent = new EventEmitter<string>();
+  @Output() public searchRequestEnterEvent: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 

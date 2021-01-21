@@ -5,7 +5,7 @@ import { getBottomBorderColor } from '../common/helper';
   selector: '[appBottomBorderColorizer]'
 })
 export class BottomBorderColorizerDirective {
-  @Input('appBottomBorderColorizer') postDate: string;
+  @Input('appBottomBorderColorizer') public postDate: string;
 
   constructor(private el: ElementRef) { }
 
@@ -13,7 +13,7 @@ export class BottomBorderColorizerDirective {
     this.el.nativeElement.style.borderBottomColor = getBottomBorderColor(this.postDate);
   }
 
-  ngOnChanges(): void {
+  public ngOnChanges(): void {
     this.paintBottomBorder();
   }
 }

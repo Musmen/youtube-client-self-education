@@ -7,8 +7,10 @@ import { getLowerCaseTrimmedString } from '../../app/common/helper';
   name: 'filterByKeyWords',
 })
 export class FilterByKeyWordsPipe implements PipeTransform {
-  transform(searchResultItems: ResponseItem[], filteringRequest: string): ResponseItem[] {
-    if (!searchResultItems || !filteringRequest) return searchResultItems;
+  public transform(searchResultItems: ResponseItem[], filteringRequest: string): ResponseItem[] {
+    if (!searchResultItems || !filteringRequest) {
+      return searchResultItems;
+    }
 
     return searchResultItems
       .filter((item: ResponseItem) => getLowerCaseTrimmedString(item.snippet.title)

@@ -1,17 +1,17 @@
 export interface ResponseList {
-  kind: string,
-  etag: string,
+  kind: string;
+  etag: string;
   pageInfo: {
     totalResults: number,
     resultsPerPage: number,
-  },
-  items: ResponseItem[],
+  };
+  items: ResponseItem[];
 }
 
 export interface ResponseItem {
-  kind: string,
-  etag: string,
-  id: string,
+  kind: string;
+  etag: string;
+  id: string;
   snippet: {
     publishedAt: string,
     channelId: string,
@@ -28,26 +28,26 @@ export interface ResponseItem {
       description: string,
     },
     defaultAudioLanguage: string,
-  },
+  };
   statistics: {
     viewCount: string,
     likeCount: string,
     dislikeCount: string,
     favoriteCount: string,
     commentCount: string,
-  }
-};
+  };
+}
 
 export interface Thumbnails {
-  default: Thumbnail,
-  medium: Thumbnail,
-  high: Thumbnail,
-  standard: Thumbnail,
-  maxres: Thumbnail
-};
+  default: Thumbnail;
+  medium: Thumbnail;
+  high: Thumbnail;
+  standard: Thumbnail;
+  maxres: Thumbnail;
+}
 
 export interface Thumbnail {
-  url: string,
-  width: number,
-  height: number
-};
+  url: string;
+  width: number;
+  height: number;
+}

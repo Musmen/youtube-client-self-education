@@ -2,7 +2,7 @@ import { BottomBorderColorizerDirective } from './bottom-border-colorizer.direct
 
 describe('BottomBorderColorizerDirective', () => {
   it('should create an instance', () => {
-    const directive = new BottomBorderColorizerDirective();
+    const directive: BottomBorderColorizerDirective = new BottomBorderColorizerDirective(null);
     expect(directive).toBeTruthy();
   });
 });

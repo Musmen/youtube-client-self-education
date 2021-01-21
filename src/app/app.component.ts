@@ -21,12 +21,14 @@ export class AppComponent {
   public filteringRequest: string;
   public searchResult: ResponseList;
 
-  ERROR_MESSAGES = ERROR_MESSAGES;
+  public ERROR_MESSAGES: {} = ERROR_MESSAGES;
 
   constructor() { }
 
   public fetchYouTube(searchRequest: string): ResponseList {
-    if (searchRequest) return YOU_TUBE_RESPONSE;
+    if (searchRequest) {
+      return YOU_TUBE_RESPONSE;
+    }
   }
 
   public startSearch(searchRequest: string): void {
@@ -39,15 +41,15 @@ export class AppComponent {
     this.searchResult = this.fetchYouTube(searchRequest);
   }
 
-  public filteringByKeyWords(filteringRequest : string) : void {
+  public filteringByKeyWords(filteringRequest: string): void {
     this.filteringRequest = filteringRequest;
   }
 
   public sortingByViews(sortingOder: boolean): void {
-    this.searchResult = sortingBy<ResponseList>(this.searchResult, getViewCountNumber, sortingOder)
+    this.searchResult = sortingBy(this.searchResult, getViewCountNumber, sortingOder);
   }
 
   public sortingByDate(sortingOder: boolean): void {
-    this.searchResult = sortingBy<ResponseList>(this.searchResult, getDateNumber, sortingOder)
+    this.searchResult = sortingBy(this.searchResult, getDateNumber, sortingOder);
   }
 }

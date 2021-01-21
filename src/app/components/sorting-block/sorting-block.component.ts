@@ -9,15 +9,14 @@ export class SortingBlockComponent {
   @Input() public isSortingPanelOpen: boolean = false;
   @Input() public filteringRequest: string = '';
 
-  @Output() public filteringByKeyWordsEvent = new EventEmitter<string>();
+  @Output() public filteringByKeyWordsEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output() public sortingByViewsEvent = new EventEmitter<boolean>();
-  @Output() public sortingByDateEvent = new EventEmitter<boolean>();
+  @Output() public sortingByViewsEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public sortingByDateEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 
-  public changeFilteringRequest(filteringRequest): void {
-    this.filteringRequest = filteringRequest;
+  public changeFilteringRequest(): void {
     this.filteringByKeyWordsEvent.emit(this.filteringRequest);
   }
 

@@ -1,6 +1,8 @@
 .mat-expansion-panel {
   background-color: #d3d3d3;
   box-shadow: none;
+
+  user-select: none;
 }
 
 .sorting-block {
