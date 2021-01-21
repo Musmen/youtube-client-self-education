@@ -1,26 +1,23 @@
-<div class="wrapper">
+<div class="upper-block">
+  <app-logo></app-logo>
 
-  <div class="upper-block">
+  <app-search-form
+    (searchRequestEnterEvent)="setSearchRequest($event)"
+  >
+  </app-search-form>
 
-    <app-logo></app-logo>
+  <app-sorting-button
+    (sortingPanelToggleEvent)="toggleSortingPanel($event)"
+  >
+  </app-sorting-button>
 
-    <app-search-form
-      (searchRequestEnterEvent)="setSearchRequest($event)">
-    </app-search-form>
-
-    <app-sorting-button
-      (sortingPanelToggleEvent)="toggleSortingPanel($event)">
-    </app-sorting-button>
-
-    <app-login></app-login>
-
-  </div>
-
-  <app-sorting-block
-    [isSortingPanelOpen]="isSortingPanelOpen"
-    (filteringByKeyWordsEvent)="filteringByKeyWords($event)"
-    (sortingByViewsEvent)="sortingByViews($event)"
-    (sortingByDateEvent)="sortingByDate($event)">
-  </app-sorting-block>
-
+  <app-login class="login-block"></app-login>
 </div>
+
+<app-sorting-block
+  [isSortingPanelOpen]="isSortingPanelOpen"
+  (filteringByKeyWordsEvent)="filteringByKeyWords($event)"
+  (sortingByViewsEvent)="sortingByViews($event)"
+  (sortingByDateEvent)="sortingByDate($event)"
+>
+</app-sorting-block>

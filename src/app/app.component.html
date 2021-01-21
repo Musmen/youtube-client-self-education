@@ -5,10 +5,12 @@
   (sortingByDateEvent)="sortingByDate($event)"
 >
 </app-header>
+
 <app-results-list
+  *ngIf="!searchRequestError; else errorMessageTemplate"
   [filteringRequest]="filteringRequest"
   [searchResult]="searchResult"
-  *ngIf="!searchRequestError; else errorMessageTemplate">
+>
 </app-results-list>
 
 <ng-template #errorMessageTemplate>

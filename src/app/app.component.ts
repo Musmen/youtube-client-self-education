@@ -4,7 +4,12 @@ import { ResponseList } from '../app/models/response.model';
 
 import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
 
-import { ERROR_MESSAGES, getViewCountNumber, getDateNumber, sortingBy } from './common/helper';
+import {
+  ERROR_MESSAGES,
+  getViewCountNumber,
+  getDateNumber,
+  sortingBy,
+} from './common/helper';
 
 @Component({
   selector: 'app-root',
@@ -12,42 +17,37 @@ import { ERROR_MESSAGES, getViewCountNumber, getDateNumber, sortingBy } from './
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  searchRequest : string;
-  filteringRequest : string;
-
-  searchResult : ResponseList;
-
-  searchRequestError : boolean = false;
+  public searchRequestError: boolean = false;
+  public filteringRequest: string;
+  public searchResult: ResponseList;
 
   ERROR_MESSAGES = ERROR_MESSAGES;
 
   constructor() { }
 
-  fetchYouTube(searchRequest : string) : ResponseList {
+  public fetchYouTube(searchRequest: string): ResponseList {
     if (searchRequest) return YOU_TUBE_RESPONSE;
   }
 
-  startSearch(searchRequest : string) : void {
-    this.searchRequest = searchRequest;
-
+  public startSearch(searchRequest: string): void {
     if (!Boolean(searchRequest)) {
       this.searchRequestError = true;
       return;
     }
-    this.searchRequestError = false;
 
+    this.searchRequestError = false;
     this.searchResult = this.fetchYouTube(searchRequest);
   }
 
-  filteringByKeyWords(filteringRequest : string) : void {
+  public filteringByKeyWords(filteringRequest : string) : void {
     this.filteringRequest = filteringRequest;
   }
 
-  sortingByViews(sortingOder: boolean): void {
+  public sortingByViews(sortingOder: boolean): void {
     this.searchResult = sortingBy<ResponseList>(this.searchResult, getViewCountNumber, sortingOder)
   }
 
-  sortingByDate(sortingOder: boolean): void {
+  public sortingByDate(sortingOder: boolean): void {
     this.searchResult = sortingBy<ResponseList>(this.searchResult, getDateNumber, sortingOder)
   }
 }

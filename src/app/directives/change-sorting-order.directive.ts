@@ -6,7 +6,7 @@ import { Directive, HostListener, Output, EventEmitter, HostBinding} from '@angu
 export class ChangeSortingOrderDirective {
   @Output() changeSortingDirectionEvent = new EventEmitter<boolean>();
 
-  sortingDirection: boolean = false;
+  private sortingDirection: boolean = false;
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class ChangeSortingOrderDirective {
   }
 
   @HostBinding('class.increasing')
-  get getSortingOrderClass() {
+  get getSortingDirection(): boolean {
     return this.sortingDirection;
   }
 }

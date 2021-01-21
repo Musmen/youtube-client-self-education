@@ -8,7 +8,8 @@
           class="sorting-criteria-link"
           href="#"
           appChangeSortingOrder
-          (changeSortingDirectionEvent)="sortByDate($event)">
+          (changeSortingDirectionEvent)="sortByDate($event)"
+        >
           <span class="text-underline">date</span>
           <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
         </a>
@@ -19,7 +20,8 @@
           class="sorting-criteria-link"
           href="#"
           appChangeSortingOrder
-          (changeSortingDirectionEvent)="sortByViews($event)">
+          (changeSortingDirectionEvent)="sortByViews($event)"
+        >
           <span class="text-underline">count of views</span>
           <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
         </a>
@@ -29,8 +31,20 @@
     <form class="filtering-form" name="filtering-form" (submit)="filteringFormSubmit()">
       <label class="filtering-form-input-label">
         <span class="filtering-form-input-label-title">by word or sentence</span>
-        <input class="filtering-form-input" type="text" name="filtering-sentence" [(ngModel)]="filteringRequest">
-        <button class="clear-button" mat-button aria-label="Clear" *ngIf="filteringRequest" type="button" (click)="filteringRequest=''">
+        <input
+          class="filtering-form-input"
+          type="text"
+          name="filtering-sentence"
+          [(ngModel)]="filteringRequest"
+        >
+        <button
+          class="clear-button"
+          type="button"
+          aria-label="Clear filter request"
+          mat-button
+          *ngIf="filteringRequest"
+          (click)="filteringRequest=''"
+        >
           <mat-icon>clear</mat-icon>
         </button>
       </label>

@@ -32,6 +32,9 @@ export const ERROR_MESSAGES = {
   SEARCH_REQUEST: 'Please, enter valid search request',
 }
 
+export const getLowerCaseTrimmedString = (inputString: string): string => String(inputString)
+  .toLowerCase().trim();
+
 export const getViewCountNumber = (item): number => Number(item.statistics.viewCount);
 export const getDateNumber = (item): number => Number(new Date(item.snippet.publishedAt).getTime());
 

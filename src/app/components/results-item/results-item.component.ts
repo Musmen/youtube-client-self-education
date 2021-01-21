@@ -1,10 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ResponseItem } from '../../models/response.model';
 import { SearchResultCard } from '../../models/searchResultCard.model';
 
 const STATISTIC_ITEMS_LABELS : string[] = ['views', 'likes', 'dislikes', 'comments'];
 
-enum LabelsIcons {
+enum LABELS_ICONS {
   views = 'visibility',
   likes = 'favorite',
   dislikes = 'thumb_down',
@@ -16,8 +16,8 @@ enum LabelsIcons {
   templateUrl: './results-item.component.html',
   styleUrls: ['./results-item.component.scss']
 })
-export class ResultsItemComponent implements OnChanges {
-  searchResultCard: SearchResultCard = {
+export class ResultsItemComponent implements OnInit {
+  public searchResultCard: SearchResultCard = {
     posterUrl: '',
     views: 0,
     likes: 0,
@@ -27,21 +27,23 @@ export class ResultsItemComponent implements OnChanges {
     date: '',
   };
 
-  STATISTIC_ITEMS_LABELS : string[] = STATISTIC_ITEMS_LABELS;
-  LabelsIcons = LabelsIcons;
+  public STATISTIC_ITEMS_LABELS : string[] = STATISTIC_ITEMS_LABELS;
+  public LABELS_ICONS = LABELS_ICONS;
 
-  @Input() searchResultItem : ResponseItem;
+  @Input() private searchResultItem : ResponseItem;
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    let currentSearchResultItem = changes.searchResultItem.currentValue;
-    this.searchResultCard.posterUrl = currentSearchResultItem.snippet.thumbnails.medium.url;
-    this.searchResultCard.views = currentSearchResultItem.statistics.viewCount;
-    this.searchResultCard.likes = currentSearchResultItem.statistics.likeCount;
-    this.searchResultCard.dislikes = currentSearchResultItem.statistics.dislikeCount;
-    this.searchResultCard.comments = currentSearchResultItem.statistics.commentCount;
-    this.searchResultCard.title = currentSearchResultItem.snippet.title;
-    this.searchResultCard.date = currentSearchResultItem.snippet.publishedAt;
+  public ngOnInit(): void {
+    const snippet = this.searchResultItem.snippet;
+    const statistics = this.searchResultItem.statistics;
+
+    this.searchResultCard.posterUrl = snippet.thumbnails.medium.url;
+    this.searchResultCard.views = statistics.viewCount;
+    this.searchResultCard.likes = statistics.likeCount;
+    this.searchResultCard.dislikes = statistics.dislikeCount;
+    this.searchResultCard.comments = statistics.commentCount;
+    this.searchResultCard.title = snippet.title;
+    this.searchResultCard.date = snippet.publishedAt;
   }
 }

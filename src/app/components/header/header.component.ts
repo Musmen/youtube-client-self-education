@@ -6,38 +6,34 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() isSortingPanelOpen: boolean = false;
-  @Input() searchRequest: string = '';
-  @Input() filteringRequest: string = '';
+  @Input() public isSortingPanelOpen: boolean = false;
 
-  @Output() startSearchEvent = new EventEmitter<string>();
+  @Output() public startSearchEvent = new EventEmitter<string>();
 
-  @Output() filteringByKeyWordsEvent = new EventEmitter<string>();
+  @Output() public filteringByKeyWordsEvent = new EventEmitter<string>();
 
-  @Output() sortingByViewsEvent = new EventEmitter<boolean>();
-  @Output() sortingByDateEvent = new EventEmitter<boolean>();
+  @Output() public sortingByViewsEvent = new EventEmitter<boolean>();
+  @Output() public sortingByDateEvent = new EventEmitter<boolean>();
 
   constructor() { }
 
-  toggleSortingPanel(sortingPanelState: boolean): void {
+  public toggleSortingPanel(sortingPanelState: boolean): void {
     this.isSortingPanelOpen = sortingPanelState;
   }
 
-  setSearchRequest(searchRequest: string): void {
-    this.searchRequest = searchRequest;
-    this.startSearchEvent.emit(this.searchRequest);
+  public setSearchRequest(searchRequest: string): void {
+    this.startSearchEvent.emit(searchRequest);
   }
 
-  filteringByKeyWords(filteringRequest: string): void {
-    this.filteringRequest = filteringRequest;
-    this.filteringByKeyWordsEvent.emit(this.filteringRequest);
+  public filteringByKeyWords(filteringRequest: string): void {
+    this.filteringByKeyWordsEvent.emit(filteringRequest);
   }
 
-  sortingByViews(sortingOder: boolean): void {
+  public sortingByViews(sortingOder: boolean): void {
     this.sortingByViewsEvent.emit(sortingOder);
   }
 
-  sortingByDate(sortingOder: boolean): void {
+  public sortingByDate(sortingOder: boolean): void {
     this.sortingByDateEvent.emit(sortingOder);
   }
 }

@@ -6,25 +6,25 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./sorting-block.component.scss']
 })
 export class SortingBlockComponent {
-  @Input() isSortingPanelOpen: boolean = false;
-  @Input() filteringRequest: string = '';
+  @Input() public isSortingPanelOpen: boolean = false;
+  @Input() public filteringRequest: string = '';
 
-  @Output() filteringByKeyWordsEvent = new EventEmitter<string>();
+  @Output() public filteringByKeyWordsEvent = new EventEmitter<string>();
 
-  @Output() sortingByViewsEvent = new EventEmitter<boolean>();
-  @Output() sortingByDateEvent = new EventEmitter<boolean>();
+  @Output() public sortingByViewsEvent = new EventEmitter<boolean>();
+  @Output() public sortingByDateEvent = new EventEmitter<boolean>();
 
   constructor() { }
 
-  filteringFormSubmit(): void {
+  public filteringFormSubmit(): void {
     this.filteringByKeyWordsEvent.emit(this.filteringRequest);
   }
 
-  sortByViews(sortingOrder: boolean): void {
+  public sortByViews(sortingOrder: boolean): void {
     this.sortingByViewsEvent.emit(sortingOrder);
   }
 
-  sortByDate(sortingOrder: boolean): void {
+  public sortByDate(sortingOrder: boolean): void {
     this.sortingByDateEvent.emit(sortingOrder);
   }
 }
