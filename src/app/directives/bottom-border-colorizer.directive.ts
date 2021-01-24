@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 import { getBottomBorderColor } from '../common/helper';
 
 @Directive({
@@ -7,10 +7,10 @@ import { getBottomBorderColor } from '../common/helper';
 export class BottomBorderColorizerDirective {
   @Input('appBottomBorderColorizer') public postDate: string;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   private paintBottomBorder(): void {
-    this.el.nativeElement.style.borderBottomColor = getBottomBorderColor(this.postDate);
+    this.renderer.setStyle(this.el.nativeElement, 'borderBottomColor', getBottomBorderColor(this.postDate));
   }
 
   public ngOnChanges(): void {
