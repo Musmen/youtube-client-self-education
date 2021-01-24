@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ResponseList } from '../app/models/response.model';
+import { ResponseList } from '../app/youtube/models/response.model';
 
 import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
 

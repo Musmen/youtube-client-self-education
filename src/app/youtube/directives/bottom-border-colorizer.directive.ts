@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
-import { getBottomBorderColor } from '../common/helper';
+import { getBottomBorderColor } from '../../common/helper';
 
 @Directive({
   selector: '[appBottomBorderColorizer]'

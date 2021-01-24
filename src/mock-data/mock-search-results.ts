@@ -1,4 +1,4 @@
-import { ResponseList } from '../app/models/response.model';
+import { ResponseList } from '../app/youtube/models/response.model';
 
 export const YOU_TUBE_RESPONSE: ResponseList = {
   'kind': 'youtube#videoListResponse',

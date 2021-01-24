@@ -7,7 +7,7 @@
       *ngFor="let statisticItemLabel of STATISTIC_ITEMS_LABELS"
     >
       <span class="statistics__icon icon_{{ statisticItemLabel }}">
-        <mat-icon>{{ LABELS_ICONS.statisticItemLabel }}</mat-icon>
+        <mat-icon>{{ LABELS_ICONS[statisticItemLabel] }}</mat-icon>
       </span>
       <span class="statistics__count count_{{ statisticItemLabel }}">
         {{ searchResultCard[statisticItemLabel] }}

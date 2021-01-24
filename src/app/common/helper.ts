@@ -1,4 +1,4 @@
-import { ResponseList } from '../../app/models/response.model';
+import { ResponseList } from '../../app/youtube/models/response.model';
 
 let MILLISECONDS_IN_ONE_SECOND: number;
 MILLISECONDS_IN_ONE_SECOND = 1000;
