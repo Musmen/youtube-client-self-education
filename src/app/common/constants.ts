@@ -1,3 +1,6 @@
+export let DEFAULT_USER_NAME: string;
+DEFAULT_USER_NAME = 'Your Name';
+
 let MILLISECONDS_IN_ONE_SECOND: number;
 MILLISECONDS_IN_ONE_SECOND = 1000;
 let SECONDS_IN_ONE_MINUTE: number;
@@ -24,9 +27,9 @@ export enum COLOR_BY_POSTDATE {
   default = '#F2C94C'
 }
 
-export const ERROR_MESSAGES: {} = {
-  SEARCH_REQUEST: 'Please, enter valid search request',
-};
+export enum ERROR_MESSAGES {
+  SEARCH_REQUEST = 'Please, enter valid search request',
+}
 
 export enum LABELS_ICONS {
   views = 'visibility',

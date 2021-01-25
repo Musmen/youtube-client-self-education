@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { SearchService } from '@youtube/services/search/search.service';
 
 @Component({
   selector: 'app-search-form',
@@ -7,11 +9,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SearchFormComponent {
   @Input() public searchRequest: string = '';
-  @Output() public searchRequestEnterEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   public searchFormSubmit(): void {
-    this.searchRequestEnterEvent.emit(this.searchRequest);
+    this.searchService.getSearchResults(this.searchRequest);
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DEFAULT_USER_NAME } from '@common/constants';
 
 @Component({
   selector: 'app-login',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public userName: string = 'Your Name';
+  public userName: string = DEFAULT_USER_NAME;
 
   constructor() { }
 }

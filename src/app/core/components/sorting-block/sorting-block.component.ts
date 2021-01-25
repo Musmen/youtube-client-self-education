@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FilterService } from '@core/services/filter/filter.service';
+import { StateService } from '@core/services/state/state.service';
 
 @Component({
   selector: 'app-sorting-block',
@@ -6,19 +8,29 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./sorting-block.component.scss']
 })
 export class SortingBlockComponent {
-  @Input() public isSortingPanelOpen: boolean = false;
-  @Input() public filteringRequest: string = '';
+  @Input()
+  public set isSortingPanelOpen(isSortingPanelOpen: boolean) {
+    this.stateService.isSortingPanelOpen = isSortingPanelOpen;
+  }
+  public get isSortingPanelOpen(): boolean {
+    return this.stateService.isSortingPanelOpen;
+  }
 
-  @Output() public filteringByKeyWordsEvent: EventEmitter<string> = new EventEmitter<string>();
+  @Input()
+  public set filteringRequest(filteringRequest: string) {
+    this.filterService.filteringRequest = filteringRequest;
+  }
+  public get filteringRequest(): string {
+    return this.filterService.filteringRequest;
+  }
 
   @Output() public sortingByViewsEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() public sortingByDateEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
-
-  public changeFilteringRequest(): void {
-    this.filteringByKeyWordsEvent.emit(this.filteringRequest);
-  }
+  constructor(
+    private filterService: FilterService,
+    private stateService: StateService,
+    ) { }
 
   public sortByViews(sortingOrder: boolean): void {
     this.sortingByViewsEvent.emit(sortingOrder);

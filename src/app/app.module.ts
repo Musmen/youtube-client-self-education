@@ -8,6 +8,10 @@ import { SharedModule } from '@shared/shared.module';
 
 import { AppComponent } from './app.component';
 
+import { StateService } from '@core/services/state/state.service';
+import { FilterService } from '@core/services/filter/filter.service';
+import { SearchService } from '@youtube/services/search/search.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,7 @@ import { AppComponent } from './app.component';
     SharedModule,
     CoreModule,
   ],
-  providers: [],
+  providers: [StateService, FilterService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

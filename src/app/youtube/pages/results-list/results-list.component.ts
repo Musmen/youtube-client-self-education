@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { ResponseList } from '@youtube/models/response.model';
+import { Component } from '@angular/core';
+
+import { SearchService } from '@youtube/services/search/search.service';
+import { FilterService } from '@core/services/filter/filter.service';
+
+import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 
 @Component({
   selector: 'app-results-list',
@@ -7,8 +11,24 @@ import { ResponseList } from '@youtube/models/response.model';
   styleUrls: ['./results-list.component.scss']
 })
 export class ResultsListComponent {
-  @Input() public searchResult: ResponseList;
-  @Input() public filteringRequest: string;
+  constructor(
+    private searchService: SearchService,
+    private filterService: FilterService,
+  ) { }
 
-  constructor() { }
+  public get searchResultsCards(): SearchResultCard[] {
+    return this.searchService.searchResultsCards;
+  }
+
+  public get searchError(): boolean {
+    return this.searchService.searchError;
+  }
+
+  public get searchErrorMessage(): string {
+    return this.searchService.searchErrorMessage;
+  }
+
+  public get filteringRequest(): string {
+    return this.filterService.filteringRequest;
+  }
 }

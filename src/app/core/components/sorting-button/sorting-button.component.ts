@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component } from '@angular/core';
+import { StateService } from '@core/services/state/state.service';
 
 @Component({
   selector: 'app-sorting-button',
@@ -6,14 +7,9 @@ import { Component, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./sorting-button.component.scss']
 })
 export class SortingButtonComponent {
-  private sortingPanelState: boolean = false;
-
-  @Output() public sortingPanelToggleEvent: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-
-  constructor() { }
+  constructor(private stateService: StateService) { }
 
   public toggleSortingPanel(): void {
-    this.sortingPanelState = !this.sortingPanelState;
-    this.sortingPanelToggleEvent.emit(this.sortingPanelState);
+    this.stateService.isSortingPanelOpen = !this.stateService.isSortingPanelOpen;
   }
 }

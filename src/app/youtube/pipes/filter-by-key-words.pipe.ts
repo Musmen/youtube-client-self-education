@@ -1,19 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-import { ResponseItem } from '@youtube/models/response.model';
+import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 import { getLowerCaseTrimmedString } from '@common/helper';
 
 @Pipe({
   name: 'filterByKeyWords',
 })
 export class FilterByKeyWordsPipe implements PipeTransform {
-  public transform(searchResultItems: ResponseItem[], filteringRequest: string): ResponseItem[] {
-    if (!searchResultItems || !filteringRequest) {
-      return searchResultItems;
-    }
+  public transform(searchResultCards: SearchResultCard[], filteringRequest: string): SearchResultCard[] {
+    if (!searchResultCards || !filteringRequest) { return searchResultCards; }
 
-    return searchResultItems
-      .filter((item: ResponseItem) => getLowerCaseTrimmedString(item.snippet.title)
+    return searchResultCards
+      .filter((searchResultCard: SearchResultCard) =>
+        getLowerCaseTrimmedString(searchResultCard.title)
         .includes(getLowerCaseTrimmedString(filteringRequest)));
   }
 }

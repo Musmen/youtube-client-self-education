@@ -1,10 +1,13 @@
-<ng-container *ngIf="searchResult">
-  <ul class="search-results-list none-style centralizer">
-    <li
-      class="search-results-item"
-      *ngFor="let searchResultItem of searchResult.items | filterByKeyWords: filteringRequest"
+<ng-container *ngIf="!searchError; else errorMessageTemplate">
+  <ul class="search-results-list none-style centralizer" *ngIf="searchResultsCards">
+    <li class="search-results-item"
+      *ngFor="let searchResultCard of searchResultsCards | filterByKeyWords: filteringRequest"
     >
-      <app-results-item [searchResultItem]="searchResultItem"></app-results-item>
+      <app-results-card [searchResultCard]="searchResultCard"></app-results-card>
     </li>
   </ul>
 </ng-container>
+
+<ng-template #errorMessageTemplate>
+  <app-error-message [errorMessage]="searchErrorMessage"></app-error-message>
+</ng-template>
