@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 
 import { ResultsListComponent } from './pages/results-list/results-list.component';
 import { ResultsItemComponent } from './components/results-item/results-item.component';

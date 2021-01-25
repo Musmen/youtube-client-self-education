@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { ResponseItem } from '../models/response.model';
-import { getLowerCaseTrimmedString } from '../../../app/common/helper';
+import { ResponseItem } from '@youtube/models/response.model';
+import { getLowerCaseTrimmedString } from '@common/helper';
 
 @Pipe({
   name: 'filterByKeyWords',

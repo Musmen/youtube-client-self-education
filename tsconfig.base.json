@@ -3,6 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@common/*": ["src/app/common/*"],
+      "@core/*": ["src/app/core/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@youtube/*": ["src/app/youtube/*"],
+      },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

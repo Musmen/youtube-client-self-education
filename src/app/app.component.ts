@@ -4,10 +4,10 @@ import {
   getViewCountNumber,
   getDateNumber,
   sortingBy,
-} from './common/helper';
+} from '@common/helper';
 
-import { ResponseList } from '../app/youtube/models/response.model';
-import { ERROR_MESSAGES } from './common/constants';
+import { ResponseList } from '@youtube/models/response.model';
+import { ERROR_MESSAGES } from '@common/constants';
 import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ResponseItem } from '../../models/response.model';
-import { SearchResultCard } from '../../models/searchResultCard.model';
+import { ResponseItem } from '@youtube/models/response.model';
+import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 
-import { LABELS_ICONS, STATISTIC_ITEMS_LABELS } from '../../../common/constants';
+import { LABELS_ICONS, STATISTIC_ITEMS_LABELS } from '@common/constants';
 
 @Component({
   selector: 'app-results-item',

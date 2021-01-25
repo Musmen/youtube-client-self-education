@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ResponseList } from '../../models/response.model';
+import { ResponseList } from '@youtube/models/response.model';
 
 @Component({
   selector: 'app-results-list',

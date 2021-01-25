@@ -1,4 +1,4 @@
-import { ResponseList, ResponseItem } from '../../app/youtube/models/response.model';
+import { ResponseList, ResponseItem } from '@youtube/models/response.model';
 import {
   MILLISECONDS_IN_ONE_WEEK,
   MILLISECONDS_IN_ONE_MONTH,
