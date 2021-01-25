@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 
-import { ResponseList } from '../app/youtube/models/response.model';
-
-import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
-
 import {
-  ERROR_MESSAGES,
   getViewCountNumber,
   getDateNumber,
   sortingBy,
 } from './common/helper';
+
+import { ResponseList } from '../app/youtube/models/response.model';
+import { ERROR_MESSAGES } from './common/constants';
+import { YOU_TUBE_RESPONSE } from '../mock-data/mock-search-results';
 
 @Component({
   selector: 'app-root',

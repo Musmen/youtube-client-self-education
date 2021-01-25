@@ -2,14 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ResponseItem } from '../../models/response.model';
 import { SearchResultCard } from '../../models/searchResultCard.model';
 
-const STATISTIC_ITEMS_LABELS: string[] = ['views', 'likes', 'dislikes', 'comments'];
-
-const LABELS_ICONS: {} = {
-  views: 'visibility',
-  likes: 'favorite',
-  dislikes: 'thumb_down',
-  comments: 'chat',
-};
+import { LABELS_ICONS, STATISTIC_ITEMS_LABELS } from '../../../common/constants';
 
 @Component({
   selector: 'app-results-item',
@@ -29,8 +22,8 @@ export class ResultsItemComponent implements OnInit {
     date: '',
   };
 
-  public STATISTIC_ITEMS_LABELS: string[] = STATISTIC_ITEMS_LABELS;
   public LABELS_ICONS: {} = LABELS_ICONS;
+  public STATISTIC_ITEMS_LABELS: string[] = STATISTIC_ITEMS_LABELS;
 
   constructor() { }
 
