@@ -41,6 +41,10 @@
   text-decoration: none;
 
   cursor: pointer;
+
+  &.active {
+    color: red;
+  }
 }
 
 .sorting-direction-icon {

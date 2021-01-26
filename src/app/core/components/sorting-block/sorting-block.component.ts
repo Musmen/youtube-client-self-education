@@ -27,9 +27,13 @@ export class SortingBlockComponent {
   public isSortingByViewsCountByIncrease: boolean = false;
   public isSortingByDateByIncrease: boolean = false;
 
+  public sortingBy: string = null;
+
   constructor(private stateService: StateService) { }
 
-  public setSortByViewsCount(): void {
+  public setSortByViewsCount(sortingBy: string): void {
+    this.sortingBy = sortingBy;
+
     this.stateService.setSortingSettings({
       method: getViewsCountNumber,
       isSortingByIncrease: this.isSortingByViewsCountByIncrease,
@@ -37,7 +41,9 @@ export class SortingBlockComponent {
     this.isSortingByViewsCountByIncrease = !this.isSortingByViewsCountByIncrease;
   }
 
-  public setSortByDate(): void {
+  public setSortByDate(sortingBy: string): void {
+    this.sortingBy = sortingBy;
+
     this.stateService.setSortingSettings({
       method: getDateNumber,
       isSortingByIncrease: this.isSortingByDateByIncrease,
