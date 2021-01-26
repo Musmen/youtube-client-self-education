@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
+import { StateService } from '@core/services/state/state.service';
 import { SearchService } from '@youtube/services/search/search.service';
-import { FilterService } from '@core/services/filter/filter.service';
 
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 
@@ -13,7 +13,7 @@ import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 export class ResultsListComponent {
   constructor(
     private searchService: SearchService,
-    private filterService: FilterService,
+    private stateService: StateService,
   ) { }
 
   public get searchResultsCards(): SearchResultCard[] {
@@ -29,6 +29,6 @@ export class ResultsListComponent {
   }
 
   public get filteringRequest(): string {
-    return this.filterService.filteringRequest;
+    return this.stateService.filteringRequest;
   }
 }

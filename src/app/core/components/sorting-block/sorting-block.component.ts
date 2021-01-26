@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FilterService } from '@core/services/filter/filter.service';
 import { StateService } from '@core/services/state/state.service';
 
 @Component({
@@ -18,19 +17,16 @@ export class SortingBlockComponent {
 
   @Input()
   public set filteringRequest(filteringRequest: string) {
-    this.filterService.filteringRequest = filteringRequest;
+    this.stateService.filteringRequest = filteringRequest;
   }
   public get filteringRequest(): string {
-    return this.filterService.filteringRequest;
+    return this.stateService.filteringRequest;
   }
 
   @Output() public sortingByViewsEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() public sortingByDateEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(
-    private filterService: FilterService,
-    private stateService: StateService,
-    ) { }
+  constructor(private stateService: StateService) { }
 
   public sortByViews(sortingOrder: boolean): void {
     this.sortingByViewsEvent.emit(sortingOrder);
