@@ -11,6 +11,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { SortingButtonComponent } from './components/sorting-button/sorting-button.component';
 import { LoginComponent } from './components/login/login.component';
 import { SortingBlockComponent } from './components/sorting-block/sorting-block.component';
+import { NotFoundComponent } from './components/not-found/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SortingBlockComponent } from './components/sorting-block/sorting-block.
     SortingButtonComponent,
     LoginComponent,
     SortingBlockComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

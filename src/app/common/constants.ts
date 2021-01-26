@@ -1,6 +1,9 @@
 export let DEFAULT_USER_NAME: string;
 DEFAULT_USER_NAME = 'Your Name';
 
+export let LOGO_DEFAULT_TITLE: string;
+LOGO_DEFAULT_TITLE = 'YouTube-Client';
+
 let MILLISECONDS_IN_ONE_SECOND: number;
 MILLISECONDS_IN_ONE_SECOND = 1000;
 let SECONDS_IN_ONE_MINUTE: number;

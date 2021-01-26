@@ -30,22 +30,18 @@ export class SortingBlockComponent {
   constructor(private stateService: StateService) { }
 
   public setSortByViewsCount(): void {
-    this.isSortingByViewsCountByIncrease = !this.isSortingByViewsCountByIncrease;
-
     this.stateService.setSortingSettings({
       method: getViewsCountNumber,
       isSortingByIncrease: this.isSortingByViewsCountByIncrease,
     });
+    this.isSortingByViewsCountByIncrease = !this.isSortingByViewsCountByIncrease;
   }
 
   public setSortByDate(): void {
-    this.isSortingByDateByIncrease = !this.isSortingByDateByIncrease;
     this.stateService.setSortingSettings({
       method: getDateNumber,
       isSortingByIncrease: this.isSortingByDateByIncrease,
     });
-
-    // this.stateService.sortingSettings.method = getDateNumber;
-    // this.stateService.sortingSettings.isSortingByIncrease = this.isSortingByDateByIncrease;
+    this.isSortingByDateByIncrease = !this.isSortingByDateByIncrease;
   }
 }

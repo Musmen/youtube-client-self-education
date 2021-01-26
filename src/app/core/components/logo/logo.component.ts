@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LOGO_DEFAULT_TITLE } from '@common/constants';
 
 @Component({
   selector: 'app-logo',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent {
+  public title: string = LOGO_DEFAULT_TITLE;
+
   constructor() { }
 }

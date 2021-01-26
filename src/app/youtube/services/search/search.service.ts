@@ -20,6 +20,7 @@ export class SearchService {
     this.searchError = !Boolean(searchRequest);
     return !this.searchError;
   }
+
   private fetchSearchResults(): ResponseList  {
     return YOU_TUBE_RESPONSE;
   }

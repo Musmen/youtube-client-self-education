@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-
 import { SearchService } from '@youtube/services/search/search.service';
 
 @Component({
