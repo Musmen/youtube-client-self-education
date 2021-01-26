@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SortingSettings } from '@core/models/sortingSettings.model';
 
 @Injectable()
 export class StateService {
@@ -19,5 +20,14 @@ export class StateService {
     return this._filteringRequest;
   }
 
+  public sortingSettings: SortingSettings = {
+    method: null,
+    isSortingByIncrease: false,
+  };
+
   constructor() { }
+
+  public setSortingSettings(sortingSettings: SortingSettings): void {
+    this.sortingSettings = sortingSettings;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,16 +6,5 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Output() public sortingByViewsEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() public sortingByDateEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   constructor() { }
-
-  public sortingByViews(sortingOder: boolean): void {
-    this.sortingByViewsEvent.emit(sortingOder);
-  }
-
-  public sortingByDate(sortingOder: boolean): void {
-    this.sortingByDateEvent.emit(sortingOder);
-  }
 }

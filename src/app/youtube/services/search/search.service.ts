@@ -4,12 +4,6 @@ import { YOU_TUBE_RESPONSE } from './mock-response/mock-response';
 import { ResponseList, ResponseItem } from '@youtube/models/response.model';
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 
-import {
-  getViewCountNumber,
-  getDateNumber,
-  sortingBy,
-} from '@common/helper';
-
 import { ERROR_MESSAGES } from '@common/constants';
 
 @Injectable()
@@ -50,12 +44,4 @@ export class SearchService {
       this.searchResultsCards = this.parseSearchResults(this.searchResults);
     }
   }
-
-  // public sortingByViews(sortingOder: boolean): void {
-  //   this.searchResults = sortingBy(this.searchResults, getViewCountNumber, sortingOder);
-  // }
-
-  // public sortingByDate(sortingOder: boolean): void {
-  //   this.searchResults = sortingBy(this.searchResults, getDateNumber, sortingOder);
-  // }
 }

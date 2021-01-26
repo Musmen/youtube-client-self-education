@@ -4,6 +4,7 @@ import { StateService } from '@core/services/state/state.service';
 import { SearchService } from '@youtube/services/search/search.service';
 
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
+import { SortingSettings } from '@core/models/sortingSettings.model';
 
 @Component({
   selector: 'app-results-list',
@@ -30,5 +31,9 @@ export class ResultsListComponent {
 
   public get filteringRequest(): string {
     return this.stateService.filteringRequest;
+  }
+
+  public get sortingSettings(): SortingSettings {
+    return this.stateService.sortingSettings;
   }
 }

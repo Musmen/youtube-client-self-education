@@ -12,10 +12,6 @@ import { SortingButtonComponent } from './components/sorting-button/sorting-butt
 import { LoginComponent } from './components/login/login.component';
 import { SortingBlockComponent } from './components/sorting-block/sorting-block.component';
 
-import {
-  ChangeSortingOrderDirective
-} from './directives/change-sorting-order/change-sorting-order.directive';
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -24,7 +20,6 @@ import {
     SortingButtonComponent,
     LoginComponent,
     SortingBlockComponent,
-    ChangeSortingOrderDirective,
   ],
   imports: [
     CommonModule,

@@ -6,9 +6,9 @@
       <li class="sorting-criteria-item">
         <a
           class="sorting-criteria-link"
+          [class.increasing]="isSortingByDateByIncrease"
           href="#"
-          appChangeSortingOrder
-          (changeSortingDirectionEvent)="sortByDate($event)"
+          (click)="setSortByDate()"
         >
           <span class="text-underline">date</span>
           <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
@@ -18,9 +18,9 @@
       <li class="sorting-criteria-item">
         <a
           class="sorting-criteria-link"
+          [class.increasing]="isSortingByViewsCountByIncrease"
           href="#"
-          appChangeSortingOrder
-          (changeSortingDirectionEvent)="sortByViews($event)"
+          (click)="setSortByViewsCount()"
         >
           <span class="text-underline">count of views</span>
           <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>

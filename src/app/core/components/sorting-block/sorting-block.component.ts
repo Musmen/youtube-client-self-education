@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StateService } from '@core/services/state/state.service';
+import { getViewsCountNumber, getDateNumber } from '@common/helper';
 
 @Component({
   selector: 'app-sorting-block',
@@ -23,16 +24,28 @@ export class SortingBlockComponent {
     return this.stateService.filteringRequest;
   }
 
-  @Output() public sortingByViewsEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() public sortingByDateEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public isSortingByViewsCountByIncrease: boolean = false;
+  public isSortingByDateByIncrease: boolean = false;
 
   constructor(private stateService: StateService) { }
 
-  public sortByViews(sortingOrder: boolean): void {
-    this.sortingByViewsEvent.emit(sortingOrder);
+  public setSortByViewsCount(): void {
+    this.isSortingByViewsCountByIncrease = !this.isSortingByViewsCountByIncrease;
+
+    this.stateService.setSortingSettings({
+      method: getViewsCountNumber,
+      isSortingByIncrease: this.isSortingByViewsCountByIncrease,
+    });
   }
 
-  public sortByDate(sortingOrder: boolean): void {
-    this.sortingByDateEvent.emit(sortingOrder);
+  public setSortByDate(): void {
+    this.isSortingByDateByIncrease = !this.isSortingByDateByIncrease;
+    this.stateService.setSortingSettings({
+      method: getDateNumber,
+      isSortingByIncrease: this.isSortingByDateByIncrease,
+    });
+
+    // this.stateService.sortingSettings.method = getDateNumber;
+    // this.stateService.sortingSettings.isSortingByIncrease = this.isSortingByDateByIncrease;
   }
 }

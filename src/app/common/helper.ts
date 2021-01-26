@@ -1,4 +1,6 @@
-import { ResponseList, ResponseItem } from '@youtube/models/response.model';
+import { SearchResultCard } from '@youtube/models/searchResultCard.model';
+import { SortingSettings } from '@core/models/sortingSettings.model';
+
 import {
   MILLISECONDS_IN_ONE_WEEK,
   MILLISECONDS_IN_ONE_MONTH,
@@ -25,32 +27,18 @@ export let getBottomBorderColor: (postDate: string) => string = (postDate) => {
 export const getLowerCaseTrimmedString: (inputString: string) => string
   = (inputString: string) => String(inputString).toLowerCase().trim();
 
-export const getViewCountNumber: (item: ResponseItem) => number
-  = (item: ResponseItem) => Number(item.statistics.viewCount);
+export const getViewsCountNumber: (searchResultCard: SearchResultCard) => number
+  = (searchResultCard: SearchResultCard) => Number(searchResultCard.views);
 
-export const getDateNumber: (item: ResponseItem) => number
-  = (item: ResponseItem) => Number(new Date(item.snippet.publishedAt).getTime());
+export const getDateNumber: (searchResultCard: SearchResultCard) => number
+  = (searchResultCard: SearchResultCard) => Number(new Date(searchResultCard.date).getTime());
 
-export const sortingBy: (
-  inputData: ResponseList,
-  getSortBaseMethod: (item: ResponseItem) => number,
-  sortingOder: boolean,
-) => ResponseList | undefined = (
-  inputData: ResponseList,
-  getSortBaseMethod: (item: ResponseItem) => number,
-  sortingOder: boolean,
-) => {
-  if (!inputData || !inputData.items) {
-    return;
-  }
-
-  inputData.items = Array.from(
-    inputData.items
-      .sort((firstItem: ResponseItem, secondItem: ResponseItem): number => sortingOder
-        ? getSortBaseMethod(firstItem) - getSortBaseMethod(secondItem)
-        : getSortBaseMethod(secondItem) - getSortBaseMethod(firstItem)
-      )
-  );
-
-  return inputData;
-};
+export const sortingBy: (searchResultCards:  SearchResultCard[], sortingSettings: SortingSettings) =>
+  SearchResultCard[] = (searchResultCards:  SearchResultCard[], sortingSettings: SortingSettings) =>
+    searchResultCards = Array.from(searchResultCards
+        .sort((firstCard: SearchResultCard, secondCard: SearchResultCard)
+        : number => sortingSettings.isSortingByIncrease
+          ? sortingSettings.method(firstCard) - sortingSettings.method(secondCard)
+          : sortingSettings.method(secondCard) - sortingSettings.method(firstCard)
+        )
+    );
