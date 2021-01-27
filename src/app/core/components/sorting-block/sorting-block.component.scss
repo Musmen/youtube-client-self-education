@@ -1,3 +1,4 @@
+@import './src/scss/variables.scss';
 @import './src/scss/mixins.scss';
 
 .mat-expansion-panel {
@@ -36,13 +37,13 @@
   display: inline-flex;
   align-items: center;
 
-  color: #2F80ED;
+  color: $main-bg-color;
   text-decoration: none;
 
   cursor: pointer;
 
   &.active {
-    color: red;
+    color: $main-font-color;
   }
 }
 
@@ -66,6 +67,10 @@
 
 .filtering-form-input-label-title {
   color: #2F80ED;
+
+  &.active {
+    color: $main-font-color;
+  }
 }
 
 .filtering-form-input {

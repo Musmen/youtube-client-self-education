@@ -1,6 +1,7 @@
 <form class="login-form" name="login-form" (submit)="loginFormSubmit()">
   <fieldset class="login-fieldset">
     <legend class="login-form-legend">Login</legend>
+
     <label class="form-input-label login-form-input-label">
       <span class="label-description">Login</span>
       <input
@@ -50,6 +51,7 @@
       type="submit"
       aria-label="Login"
       mat-button
+      appHighlightButton
     >
       Login
     </button>
@@ -58,6 +60,7 @@
       type="submit"
       aria-label="Logout"
       mat-button
+      appHighlightButton
     >
       Logout
     </button>

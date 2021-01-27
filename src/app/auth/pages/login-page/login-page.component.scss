@@ -72,9 +72,9 @@
 }
 
 .form-container {
-  @include flex-evenly;
+  @include flex-around;
 
-  margin-top: 20px;
+  margin: 20px;
 }
 
 .login-form-button {

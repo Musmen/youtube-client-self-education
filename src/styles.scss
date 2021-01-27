@@ -1,6 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 @import './scss/normalize.scss';
+@import './scss/variables.scss';
 @import './scss/forms.scss';
+@import './scss/buttons.scss';
 
 .centralizer {
   width: 1200px;
@@ -25,16 +26,16 @@ html, body {
 body {
   margin: 0;
 
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: #4F4F4F;
+  font-family: $main-font;
+  color: $main-font-color;
 }
 
 .main-bg-color {
-  background-color: #2F80ED;
+  background-color: $main-bg-color;
 }
 
 .shadow {
-  box-shadow: 2px 0px 4px 0px #2F80ED;
+  box-shadow: $btn-box-shadow;
 }
 
 .none-style {

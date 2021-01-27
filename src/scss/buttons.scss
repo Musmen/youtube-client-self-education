@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+.button--hovered {
+  &.mat-button, &.mat-icon-button {
+    background-color: $main-font-color;
+
+    box-shadow: $hovered-btn-box-shadow;
+  }
+}

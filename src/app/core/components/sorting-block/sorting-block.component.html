@@ -30,7 +30,10 @@
 
     <form class="filtering-form" name="filtering-form">
       <label class="filtering-form-input-label">
-        <span class="filtering-form-input-label-title">by word or sentence</span>
+        <span
+          class="filtering-form-input-label-title"
+          [class.active]="!!filteringRequest"
+        >by word or sentence</span>
         <input
           class="filtering-form-input"
           type="text"

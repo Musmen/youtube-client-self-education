@@ -9,6 +9,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
+import { HighlightButtonDirective } from './directives/highlight-button.directive';
+
 // tslint:disable-next-line: typedef
 const angularMaterialModules = [
   MatInputModule,
@@ -20,6 +22,7 @@ const angularMaterialModules = [
 @NgModule({
   declarations: [
     ErrorMessageComponent,
+    HighlightButtonDirective,
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ const angularMaterialModules = [
     BrowserAnimationsModule,
     ...angularMaterialModules,
     ErrorMessageComponent,
+    HighlightButtonDirective,
   ]
 })
 export class SharedModule { }
