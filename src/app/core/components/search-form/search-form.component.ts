@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SearchService } from '@youtube/services/search/search.service';
+import { YouTubeService } from '@youtube/services/youtube/youtube.service';
 
 @Component({
   selector: 'app-search-form',
@@ -9,9 +9,9 @@ import { SearchService } from '@youtube/services/search/search.service';
 export class SearchFormComponent {
   @Input() public searchRequest: string = '';
 
-  constructor(private searchService: SearchService) { }
+  constructor(private youTubeService: YouTubeService) { }
 
   public searchFormSubmit(): void {
-    this.searchService.getSearchResults(this.searchRequest);
+    this.youTubeService.getSearchResults(this.searchRequest);
   }
 }

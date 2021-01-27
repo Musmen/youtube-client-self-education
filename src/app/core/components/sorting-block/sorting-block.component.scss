@@ -1,3 +1,5 @@
+@import './src/scss/mixins.scss';
+
 .mat-expansion-panel {
   background-color: #d3d3d3;
   box-shadow: none;
@@ -6,9 +8,8 @@
 }
 
 .sorting-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-centered;
+
   min-height: 50px;
 
   font-size: 12px;
@@ -22,10 +23,8 @@
 }
 
 .sorting-criteria-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  @include flex-centered;
+
   margin: 0;
 }
 
@@ -61,9 +60,8 @@
 
 .filtering-form-input-label {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  @include flex-centered;
 }
 
 .filtering-form-input-label-title {

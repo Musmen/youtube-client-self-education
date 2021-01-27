@@ -1,8 +1,10 @@
+@import './src/scss/mixins.scss';
+
 .upper-block {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  @include flex-centered;
+
   width: 100%;
 
   background-color: #d3d3d3;

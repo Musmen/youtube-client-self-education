@@ -1,3 +1,5 @@
+@import './src/scss/mixins.scss';
+
 .search-card {
   position: relative;
 
@@ -26,8 +28,8 @@
 }
 
 .search-card__statistics_list {
-  display: flex;
-  justify-content: space-evenly;
+  @include flex-evenly;
+
   width: 100%;
 }
 
@@ -48,11 +50,12 @@
 }
 
 .search-card__title {
+  max-height: 69px;
+
   font-family: Roboto;
   font-size: 20px;
   font-weight: 700;
   line-height: 23px;
-  max-height: 69px;
   letter-spacing: 0em;
   text-align: right;
   text-overflow: ellipsis;

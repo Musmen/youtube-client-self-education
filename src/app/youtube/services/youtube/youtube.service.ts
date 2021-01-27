@@ -7,7 +7,7 @@ import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 import { ERROR_MESSAGES } from '@common/constants';
 
 @Injectable()
-export class SearchService {
+export class YouTubeService {
   private searchResults: ResponseList = null;
   public searchResultsCards: SearchResultCard[] = null;
 

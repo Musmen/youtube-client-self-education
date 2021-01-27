@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { StateService } from '@core/services/state/state.service';
-import { SearchService } from '@youtube/services/search/search.service';
+import { YouTubeService } from '@youtube/services/youtube/youtube.service';
 
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 import { SortingSettings } from '@core/models/sortingSettings.model';
@@ -13,20 +13,20 @@ import { SortingSettings } from '@core/models/sortingSettings.model';
 })
 export class ResultsListComponent {
   constructor(
-    private searchService: SearchService,
+    private youTubeService: YouTubeService,
     private stateService: StateService,
   ) { }
 
   public get searchResultsCards(): SearchResultCard[] {
-    return this.searchService.searchResultsCards;
+    return this.youTubeService.searchResultsCards;
   }
 
   public get searchError(): boolean {
-    return this.searchService.searchError;
+    return this.youTubeService.searchError;
   }
 
   public get searchErrorMessage(): string {
-    return this.searchService.searchErrorMessage;
+    return this.youTubeService.searchErrorMessage;
   }
 
   public get filteringRequest(): string {

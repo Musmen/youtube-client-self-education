@@ -9,6 +9,7 @@ import { BottomBorderColorizerDirective } from './directives/bottom-border-color
 
 import { FilterByKeyWordsPipe } from './pipes/filter-by-key-words/filter-by-key-words.pipe';
 import { SortPipe } from './pipes/sort/sort.pipe';
+import { DetailedInfoPageComponent } from './pages/detailed-info/detailed-info-page/detailed-info-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SortPipe } from './pipes/sort/sort.pipe';
     BottomBorderColorizerDirective,
     FilterByKeyWordsPipe,
     SortPipe,
+    DetailedInfoPageComponent,
   ],
   imports: [
     SharedModule,

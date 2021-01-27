@@ -1,7 +1,7 @@
+@import './src/scss/mixins.scss';
+
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-centered;
 
   width: 100vw;
   height: 100vh;

@@ -1,7 +1,9 @@
+@import './src/scss/mixins.scss';
+
 .search-results-list {
-  display: flex;
+  @include flex-wrap;
   align-items: center;
-  flex-wrap: wrap;
+
   margin-top: 12px;
 }
 

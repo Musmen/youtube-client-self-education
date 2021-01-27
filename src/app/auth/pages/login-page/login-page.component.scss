@@ -1,0 +1,82 @@
+@import './src/scss/mixins.scss';
+
+:host {
+  @include flex;
+
+  width: 100vw;
+}
+
+.login-form {
+  @include flex-column;
+
+  width: 344px;
+  min-height: 248px;
+  margin-top: 45px;
+  padding: 0 20px;
+
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.login-fieldset {
+  @include flex-column;
+
+  margin: 0;
+  margin-top: 25px;
+  padding: 0;
+
+  border: 0;
+}
+
+.login-form-legend {
+  margin-bottom: 20px;
+
+  font-size: 20px;
+  color: #000000;
+}
+
+.login-form-input-label {
+  @include flex-column;
+
+  margin: 3px 0;
+}
+
+.label-description {
+  padding-left: 10px;
+
+  color: #828282;
+}
+
+.login-form-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 37px;
+  margin: 3px 0;
+  padding: 10px;
+  padding-right: 24px;
+
+  font-size: 12px;
+  color: #000000;
+
+  background-color: #e0e0e0;
+  border: 0;
+
+  &:focus{
+    outline: 0;
+  }
+}
+
+.mat-button.login-form-clear-button {
+  top: 22px;
+  height: 37px;
+}
+
+.form-container {
+  @include flex-evenly;
+
+  margin-top: 20px;
+}
+
+.login-form-button {
+  width: 124px;
+}

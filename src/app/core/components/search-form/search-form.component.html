@@ -1,14 +1,14 @@
 <form class="search-form" name="search-form" (submit)="searchFormSubmit()">
-  <label class="search-form-input-label">
+  <label class="form-input-label">
     <input
-      class="search-form-input"
+      class="form-input search-form-input"
       type="text"
       name="search-form-input"
       placeholder="What are you want to find out?"
       [(ngModel)]="searchRequest"
     >
     <button
-      class="clear-button"
+      class="form-clear-button"
       type="button"
       aria-label="Clear search request"
       mat-button
@@ -20,7 +20,7 @@
   </label>
 
   <button
-    class="button shadow search-button main-bg-color"
+    class="shadow form-button main-bg-color search-form-button"
     type="submit"
     aria-label="Start searching"
     mat-button
