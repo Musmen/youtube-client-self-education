@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ERROR_MESSAGES } from '@common/constants';
 
 @Component({
   selector: 'app-not-found',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent {
+  public mainDescription: string = ERROR_MESSAGES.NOT_FOUND_PAGE;
+
   constructor() { }
 }
