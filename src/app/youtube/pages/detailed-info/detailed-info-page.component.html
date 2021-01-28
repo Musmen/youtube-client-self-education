@@ -1,0 +1,33 @@
+<section class="info-card centralizer">
+  <div class="button-wrapper">
+    <button
+      class="button shadow info-card__back-button main-bg-color"
+      aria-label="Back"
+      mat-button
+      appHighlightButton
+    >
+      <img class="info-card-button-image" src="../../../../../assets/images/back-button.png">
+    </button>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="poster-wrapper" [ngStyle]="{'background-image': 'url(' + infoCard.posterUrl + ')'}">
+    </div>
+
+    <div class="description-wrapper" [appBottomBorderColorizer]="infoCard.date">
+      <div class="info-card__header">
+        <h2 class="info-card__title">{{ infoCard.title }}</h2>
+        <span class="info-card__date">{{ infoCard.date }}</span>
+      </div>
+
+      <div class="info-card__description">
+        <h4 class="description__title">Description:</h4>
+        <p class="description__info">{{ infoCard.description }}</p>
+      </div>
+
+      <div class="description__statistics">
+        <app-statistics [card]="infoCard"></app-statistics>
+      </div>
+    </div>
+  </div>
+</section>

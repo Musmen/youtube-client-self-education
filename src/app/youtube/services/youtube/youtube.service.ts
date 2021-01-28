@@ -28,12 +28,16 @@ export class YouTubeService {
   private parseSearchResults(searchResults: ResponseList): SearchResultCard[] {
     return searchResults.items.map((searchResultItem: ResponseItem) => {
       return {
+        id: searchResultItem.id,
         posterUrl: searchResultItem.snippet.thumbnails.medium.url,
         views: searchResultItem.statistics.viewCount,
         likes: searchResultItem.statistics.likeCount,
         dislikes: searchResultItem.statistics.dislikeCount,
         comments: searchResultItem.statistics.commentCount,
-        title: searchResultItem.snippet.title,
+        title: searchResultItem.snippet.localized.title
+          || searchResultItem.snippet.title,
+        description: searchResultItem.snippet.localized.description
+          || searchResultItem.snippet.description,
         date: searchResultItem.snippet.publishedAt,
       };
     });

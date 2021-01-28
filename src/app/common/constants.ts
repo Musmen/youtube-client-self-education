@@ -24,10 +24,10 @@ export const MILLISECONDS_IN_ONE_MONTH: number = MILLISECONDS_IN_ONE_DAY * DAYS_
 export const MILLISECONDS_IN_SIX_MONTHS: number = MILLISECONDS_IN_ONE_MONTH * 6;
 
 export enum COLOR_BY_POSTDATE {
-  weekly = '#2F80ED',
-  monthly = '#27AE60',
-  old = '#EB5757',
-  default = '#F2C94C'
+  weekly = '#2f80ed',
+  monthly = '#27ae60',
+  old = '#eb5757',
+  default = '#f2c94c'
 }
 
 export enum ERROR_MESSAGES {

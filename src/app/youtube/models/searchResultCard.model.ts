@@ -1,4 +1,5 @@
 export interface SearchResultCard {
+  id: number | string;
   posterUrl: string;
   views: number | string;
   likes: number | string;
@@ -6,4 +7,5 @@ export interface SearchResultCard {
   comments: number | string;
   title: string;
   date: string;
+  description: string;
 }

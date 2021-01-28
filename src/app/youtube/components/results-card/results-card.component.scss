@@ -27,42 +27,6 @@
   margin-bottom: 20px;
 }
 
-.search-card__statistics_list {
-  @include flex-evenly;
-
-  width: 100%;
-}
-
-.search-card__statistics_item {
-  display: flex;
-  align-items: center;
-}
-
-.statistics__icon {
-  font-size: 0;
-}
-
-.statistics__count {
-  margin-left: 3px;
-
-  font-family: Roboto;
-  font-size: 10px;
-}
-
-.search-card__title {
-  max-height: 69px;
-
-  font-family: Roboto;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 23px;
-  letter-spacing: 0em;
-  text-align: right;
-  text-overflow: ellipsis;
-
-  overflow: hidden;
-}
-
 .search-card__button_more {
   position: absolute;
   bottom: 10px;
@@ -71,4 +35,17 @@
   height: 32px;
 
   color: #ffffff;
+}
+
+.search-card__title {
+  max-height: 69px;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: right;
+  text-overflow: ellipsis;
+
+  overflow: hidden;
 }
