@@ -8,7 +8,7 @@ import {
   COLOR_BY_POSTDATE,
 } from './constants';
 
-export let getBottomBorderColor: (postDate: string) => string = (postDate) => {
+export let getColorByDate: (postDate: string) => string = (postDate) => {
   let passedMilliseconds: number = Date.now() - new Date(postDate).getTime();
 
   if (passedMilliseconds < MILLISECONDS_IN_ONE_WEEK) {

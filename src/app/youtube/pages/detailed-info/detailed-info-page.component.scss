@@ -6,8 +6,6 @@
 
   height: 461px;
   margin-top: 44px;
-
-  color: #828282;
 }
 
 .button-wrapper {
@@ -28,8 +26,6 @@
   display: flex;
 
   background-color: #e5e5e5;
-  filter: drop-shadow(5px 10px 10px rgba(39, 174, 96, 0.25)); // !!! todo
-  box-shadow: 5px 10px 10px 0px rgba(39, 174, 96, 0.25); // !!! todo
   border-radius: 5px;
 }
 
@@ -49,6 +45,8 @@
 
   width: 40%;
   padding: 0 34px;
+
+  color: #828282;
 
   border-bottom: solid 5px #f2c94c;
   border-bottom-right-radius: 5px;
@@ -71,6 +69,7 @@
 
 .info-card__date {
   font-size: 10px;
+  color: #828282;
 }
 
 .description__title {

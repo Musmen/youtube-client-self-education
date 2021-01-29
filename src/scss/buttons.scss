@@ -2,8 +2,8 @@
 
 .button--hovered {
   &.mat-button, &.mat-icon-button {
-    background-color: $main-font-color;
+    background-color: $main-font-color !important;
 
-    box-shadow: $hovered-btn-box-shadow;
+    box-shadow: $hovered-btn-box-shadow !important;
   }
 }

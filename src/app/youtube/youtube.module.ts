@@ -7,7 +7,7 @@ import { ResultsCardComponent } from './components/results-card/results-card.com
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { DetailedInfoPageComponent } from './pages/detailed-info/detailed-info-page.component';
 
-import { BottomBorderColorizerDirective } from './directives/bottom-border-colorizer.directive';
+import { ColorizerByDateDirective } from './directives/colorizer.directive';
 
 import { FilterByKeyWordsPipe } from './pipes/filter-by-key-words/filter-by-key-words.pipe';
 import { SortPipe } from './pipes/sort/sort.pipe';
@@ -16,7 +16,7 @@ import { SortPipe } from './pipes/sort/sort.pipe';
   declarations: [
     ResultsListComponent,
     ResultsCardComponent,
-    BottomBorderColorizerDirective,
+    ColorizerByDateDirective,
     FilterByKeyWordsPipe,
     SortPipe,
     DetailedInfoPageComponent,

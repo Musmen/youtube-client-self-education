@@ -2,19 +2,29 @@
   <div class="button-wrapper">
     <button
       class="button shadow info-card__back-button main-bg-color"
+      [ngStyle]="{'box-shadow': '5px 3px 10px 0px'}"
       aria-label="Back"
       mat-button
       appHighlightButton
+      [appColorizerByDate]="infoCard.date"
+      [stylePropertiesToColorize]="['backgroundColor','color']"
+      [colorAlfaHexAdditionList]="['', '80']"
     >
       <img class="info-card-button-image" src="../../../../../assets/images/back-button.png">
     </button>
   </div>
 
-  <div class="card-wrapper">
+  <div
+    class="card-wrapper"
+    [ngStyle]="{'filter': 'drop-shadow(5px 10px 10px)', 'box-shadow': '5px 10px 10px 0px'}"
+    [appColorizerByDate]="infoCard.date"
+    [stylePropertiesToColorize]="['color']"
+    [colorAlfaHexAdditionList]="['40']"
+  >
     <div class="poster-wrapper" [ngStyle]="{'background-image': 'url(' + infoCard.posterUrl + ')'}">
     </div>
 
-    <div class="description-wrapper" [appBottomBorderColorizer]="infoCard.date">
+    <div class="description-wrapper" [appColorizerByDate]="infoCard.date">
       <div class="info-card__header">
         <h2 class="info-card__title">{{ infoCard.title }}</h2>
         <span class="info-card__date">{{ infoCard.date }}</span>
