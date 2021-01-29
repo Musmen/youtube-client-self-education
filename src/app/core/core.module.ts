@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '@shared/shared.module';
 
@@ -24,7 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found/not-found.co
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    // FormsModule,
     SharedModule,
   ],
   exports: [
