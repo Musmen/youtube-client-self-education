@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-results-card',
@@ -9,5 +10,12 @@ import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 export class ResultsCardComponent {
   @Input() public searchResultCard: SearchResultCard;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
+
+  public goToDetailedInfoPage(): void {
+    this.router.navigate(['info', this.searchResultCard.id], { relativeTo: this.route });
+  }
 }

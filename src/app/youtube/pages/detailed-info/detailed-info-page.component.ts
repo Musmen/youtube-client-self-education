@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { YouTubeService } from '@youtube/services/youtube/youtube.service';
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 
@@ -10,14 +12,18 @@ import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 export class DetailedInfoPageComponent implements OnInit {
   @Input() public infoCard: SearchResultCard = null;
 
-  constructor(private youTubeService: YouTubeService) { }
+  constructor(
+    private youTubeService: YouTubeService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
 
-  public ngOnInit(): void { // !!! todo
-    this.youTubeService.getSearchResults('some request');
+  public ngOnInit(): void {
+    this.infoCard = this.youTubeService.searchResultsCards
+      .find((card) => card.id === this.route.snapshot.params.id);
+  }
 
-    const length: number = this.youTubeService.searchResultsCards.length;
-    const randomCardIndex: number = Math.ceil((length - 1) * Math.random());
-    console.log(randomCardIndex);
-    this.infoCard = this.youTubeService.searchResultsCards[randomCardIndex];
+  public goBack(): void {
+    this.router.navigate(['..']);
   }
 }

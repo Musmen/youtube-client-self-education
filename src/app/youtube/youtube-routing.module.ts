@@ -6,7 +6,7 @@ import { DetailedInfoPageComponent } from './pages/detailed-info/detailed-info-p
 
 const routes: Routes = [
   { path: '', component: ResultsListComponent },
-  { path: 'info', component: DetailedInfoPageComponent }
+  { path: 'info/:id', component: DetailedInfoPageComponent }
 ];
 
 @NgModule({
