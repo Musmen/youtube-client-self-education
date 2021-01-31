@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import { StateService } from '@core/services/state/state.service';
 import { YouTubeService } from '@youtube/services/youtube/youtube.service';
+import { LoginService } from '@auth/services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { YouTubeService } from '@youtube/services/youtube/youtube.service';
   providers: [
     StateService,
     YouTubeService,
+    LoginService,
   ],
   bootstrap: [AppComponent]
 })

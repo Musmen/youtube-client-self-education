@@ -9,15 +9,15 @@
         type="text"
         name="login-form-input"
         placeholder="Enter your login, please"
-        [(ngModel)]="login"
+        [(ngModel)]="credentials.login"
       >
       <button
         class="form-clear-button login-form-clear-button"
         type="button"
         aria-label="Clear login"
         mat-button
-        *ngIf="login"
-        (click)="login=''"
+        *ngIf="credentials.login"
+        (click)="credentials.login=''"
       >
         <mat-icon>clear</mat-icon>
       </button>
@@ -28,17 +28,17 @@
       <input
         class="form-input login-form-input"
         type="password"
-        name="login-form-input"
+        name="password-form-input"
         placeholder="Enter password, please"
-        [(ngModel)]="password"
+        [(ngModel)]="credentials.password"
       >
       <button
         class="form-clear-button login-form-clear-button"
         type="button"
         aria-label="Clear password"
         mat-button
-        *ngIf="password"
-        (click)="password=''"
+        *ngIf="credentials.password"
+        (click)="credentials.password=''"
       >
         <mat-icon>clear</mat-icon>
       </button>
@@ -57,10 +57,11 @@
     </button>
     <button
       class="button shadow form-button login-form-button main-bg-color"
-      type="submit"
+      type="button"
       aria-label="Logout"
       mat-button
       appHighlightButton
+      (click)="logOut()"
     >
       Logout
     </button>

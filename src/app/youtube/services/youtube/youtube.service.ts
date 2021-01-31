@@ -49,4 +49,9 @@ export class YouTubeService {
       this.searchResultsCards = this.parseSearchResults(this.searchResults);
     }
   }
+
+  public getSearchResultCardById(id: string): SearchResultCard {
+    return this.searchResultsCards && this.searchResultsCards
+      .find((card) => card.id === id);
+  }
 }

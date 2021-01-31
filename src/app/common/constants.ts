@@ -1,3 +1,5 @@
+import { Credentials } from '@auth/models/credentials.model';
+
 export let DEFAULT_USER_NAME: string;
 DEFAULT_USER_NAME = 'Your Name';
 
@@ -49,3 +51,12 @@ for (let statisticItem in LABELS_ICONS) {
     STATISTIC_ITEMS_LABELS.push(statisticItem);
   }
 }
+
+export let LOCAL_STORAGE_TOKEN_KEY: string;
+LOCAL_STORAGE_TOKEN_KEY = 'app-youtube-client-token';
+
+export const EMPTY_CREDENTIALS: Credentials = {
+  login: '',
+  password: '',
+  token: '',
+};

@@ -19,8 +19,10 @@ export class DetailedInfoPageComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.infoCard = this.youTubeService.searchResultsCards
-      .find((card) => card.id === this.route.snapshot.params.id);
+    const selectedCardId: string = this.route.snapshot.params.id;
+    if (!selectedCardId) { return; }
+
+    this.infoCard = this.youTubeService.getSearchResultCardById(selectedCardId);
   }
 
   public goBack(): void {
