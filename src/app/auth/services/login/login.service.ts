@@ -12,7 +12,7 @@ export class LoginService {
   public credentials: Credentials;
   public isUserLogged: boolean = false;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     this.credentials = EMPTY_CREDENTIALS;
   }
 

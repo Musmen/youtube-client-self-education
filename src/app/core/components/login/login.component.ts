@@ -13,8 +13,9 @@ export class LoginComponent {
   }
 
   public get userLogin(): string {
-    return (this.loginService.credentials && this.loginService.credentials.login.slice(0, USER_LOGIN_MAX_LENGTH))
-      || DEFAULT_USER_LOGIN;
+    return (this.loginService.credentials
+      && this.loginService.credentials.login.slice(0, USER_LOGIN_MAX_LENGTH))
+        || DEFAULT_USER_LOGIN;
   }
 
   constructor(private loginService: LoginService) { }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CanLeaveAuthGuard } from './can-leave-auth.guard';
+import { AuthGuard } from './auth.guard';
 
-describe('CanLeaveAuthGuard', () => {
-  let guard: CanLeaveAuthGuard;
+describe('AuthGuard', () => {
+  let guard: AuthGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(CanLeaveAuthGuard);
+    guard = TestBed.inject(AuthGuard);
   });
 
   it('should be created', () => {

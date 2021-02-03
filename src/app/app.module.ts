@@ -12,7 +12,7 @@ import { StateService } from '@core/services/state/state.service';
 import { YouTubeService } from '@youtube/services/youtube/youtube.service';
 import { LoginService } from '@auth/services/login/login.service';
 
-import { CanLeaveAuthGuard } from '@auth/guards/can-leave-auth.guard';
+import { AuthGuard } from '@auth/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { CanLeaveAuthGuard } from '@auth/guards/can-leave-auth.guard';
     StateService,
     YouTubeService,
     LoginService,
-    CanLeaveAuthGuard,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

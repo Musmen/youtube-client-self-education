@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CanLeaveAuthGuard } from '@auth/guards/can-leave-auth.guard';
+import { AuthGuard } from '@auth/guards/auth.guard';
 
 import { NotFoundComponent } from '@core/components/not-found/not-found/not-found.component';
 
@@ -10,10 +10,10 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./youtube/youtube.module').then(m => m.YouTubeModule),
-    canLoad: [CanLeaveAuthGuard],
+    canLoad: [AuthGuard],
   },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { CanLeaveAuthGuard } from './guards/can-leave-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent, canDeactivate: [CanLeaveAuthGuard] }
+  { path: '', component: LoginPageComponent, canDeactivate: [AuthGuard] }
 ];
 
 @NgModule({
