@@ -10,13 +10,12 @@ HEX_BASE = 16;
 @Injectable()
 export class LoginService {
   public credentials: Credentials = EMPTY_CREDENTIALS;
-
   public isUserLogged: boolean = false;
 
   constructor(private router: Router) { }
 
-  private toggleUserLoggedState(isUserLogged: boolean = this.isUserLogged): void {
-    isUserLogged = !isUserLogged;
+  private toggleUserLoggedState(): void {
+    this.isUserLogged = !this.isUserLogged;
   }
 
   private encryptToken(credentials: Credentials): string {

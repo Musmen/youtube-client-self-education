@@ -1,6 +1,9 @@
 @import './src/scss/mixins.scss';
 
-.login-block {
+:host {
+  position: absolute;
+  right: 80px;
+
   @include flex-centered;
 }
 
@@ -14,4 +17,8 @@
 
   border-radius: 10px;
   background-color: white;
+}
+
+.button-logout {
+  margin-left: 10px;
 }

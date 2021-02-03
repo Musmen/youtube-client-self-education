@@ -1,6 +1,15 @@
-<div class="login-block">
-  <span class="user-name">
-    {{ userName }}
-  </span>
-  <img class="user-avatar shadow" src="../../../assets/images/avatar-default.png">
-<div>
+<span class="user-name">
+  {{ userName }}
+</span>
+<img class="user-avatar shadow" src="../../../assets/images/avatar-default.png">
+<button
+    class="button shadow form-button button-logout main-bg-color"
+    type="button"
+    aria-label="Logout"
+    mat-button
+    [disabled]="!isUserLogged"
+    appHighlightButton
+    (click)="logOut()"
+  >
+    Logout
+</button>

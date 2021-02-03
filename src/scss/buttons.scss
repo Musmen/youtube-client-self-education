@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.button--hovered {
+.button--hovered:not([disabled]):hover {
   &.mat-button, &.mat-icon-button {
     background-color: $main-font-color !important;
 

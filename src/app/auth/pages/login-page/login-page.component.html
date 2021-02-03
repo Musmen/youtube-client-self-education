@@ -1,4 +1,9 @@
-<form class="login-form" name="login-form" (submit)="loginFormSubmit()">
+<form 
+  class="login-form" 
+  name="login-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="loginFormSubmit()"
+>
   <fieldset class="login-fieldset">
     <legend class="login-form-legend">Login</legend>
 
@@ -9,15 +14,16 @@
         type="text"
         name="login-form-input"
         placeholder="Enter your login, please"
-        [(ngModel)]="credentials.login"
+        formControlName="login"
+        required
       >
       <button
         class="form-clear-button login-form-clear-button"
         type="button"
         aria-label="Clear login"
         mat-button
-        *ngIf="credentials.login"
-        (click)="credentials.login=''"
+        *ngIf="loginForm.controls.login.value"
+        (click)="loginForm.controls.login.setValue('')"
       >
         <mat-icon>clear</mat-icon>
       </button>
@@ -30,15 +36,16 @@
         type="password"
         name="password-form-input"
         placeholder="Enter password, please"
-        [(ngModel)]="credentials.password"
+        formControlName="password"
+        required
       >
       <button
         class="form-clear-button login-form-clear-button"
         type="button"
         aria-label="Clear password"
         mat-button
-        *ngIf="credentials.password"
-        (click)="credentials.password=''"
+        *ngIf="loginForm.controls.password.value"
+        (click)="loginForm.controls.password.setValue('')"
       >
         <mat-icon>clear</mat-icon>
       </button>
@@ -52,6 +59,7 @@
       aria-label="Login"
       mat-button
       appHighlightButton
+      [disabled]="loginForm.invalid"
     >
       Login
     </button>
@@ -60,6 +68,7 @@
       type="button"
       aria-label="Logout"
       mat-button
+      [disabled]="!isUserLogged"
       appHighlightButton
       (click)="logOut()"
     >

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Credentials } from '@auth/models/credentials.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '@auth/services/login/login.service';
-import { EMPTY_CREDENTIALS } from '@common/constants';
 
 @Component({
   selector: 'app-login-page',
@@ -10,18 +8,22 @@ import { EMPTY_CREDENTIALS } from '@common/constants';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  public credentials: Credentials;
+  public loginForm: FormGroup = new FormGroup({
+    login: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
+
+  public get isUserLogged(): boolean {
+    return this.loginService.isUserLogged;
+  }
 
   constructor(private loginService: LoginService) { }
 
-  private checkUsersCredentials(credentials: Credentials = this.credentials): boolean {
-    return Boolean(credentials.login && credentials.password);
-  }
-
   public loginFormSubmit(): void {
-    if (!this.checkUsersCredentials()) { return; }
-
-    this.loginService.logIn(this.credentials);
+    this.loginService.logIn({
+      login: this.loginForm.controls.login.value,
+      password: this.loginForm.controls.password.value,
+    });
   }
 
   public logOut(): void {
@@ -29,6 +31,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.credentials = this.loginService.credentials || EMPTY_CREDENTIALS;
+    this.loginForm.setValue({
+      login: (this.loginService.credentials && this.loginService.credentials.login) || '',
+      password: (this.loginService.credentials && this.loginService.credentials.password) || '',
+    });
   }
 }

@@ -5,7 +5,7 @@ export class HighlightButtonDirective {
 
   constructor(private element: ElementRef, private renderer: Renderer2) { }
 
-  @HostListener('mouseover')
+  @HostListener('mouseenter')
   private onMouseOver(): void {
     this.renderer.addClass(this.element.nativeElement, 'button--hovered');
   }
