@@ -1,7 +1,10 @@
 import { Credentials } from '@auth/models/credentials.model';
 
-export let DEFAULT_USER_NAME: string;
-DEFAULT_USER_NAME = 'Your Name';
+export let DEFAULT_USER_LOGIN: string;
+DEFAULT_USER_LOGIN = 'Your Name';
+
+export let USER_LOGIN_MAX_LENGTH: number;
+USER_LOGIN_MAX_LENGTH = 10;
 
 export let LOGO_DEFAULT_TITLE: string;
 LOGO_DEFAULT_TITLE = 'YouTube-Client';

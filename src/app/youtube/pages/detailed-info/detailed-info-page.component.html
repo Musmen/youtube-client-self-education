@@ -28,7 +28,7 @@
     <div class="description-wrapper" [appColorizerByDate]="infoCard.date">
       <div class="info-card__header">
         <h2 class="info-card__title">{{ infoCard.title }}</h2>
-        <span class="info-card__date">{{ infoCard.date }}</span>
+        <span class="info-card__date">{{ infoCard.date | date:'fullDate' }}</span>
       </div>
 
       <div class="info-card__description">

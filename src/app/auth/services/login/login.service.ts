@@ -9,10 +9,12 @@ HEX_BASE = 16;
 
 @Injectable()
 export class LoginService {
-  public credentials: Credentials = EMPTY_CREDENTIALS;
+  public credentials: Credentials;
   public isUserLogged: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    this.credentials = EMPTY_CREDENTIALS;
+  }
 
   private toggleUserLoggedState(): void {
     this.isUserLogged = !this.isUserLogged;
