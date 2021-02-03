@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CanLeaveAuthGuard } from '@auth/guards/can-leave-auth.guard';
 
 import { NotFoundComponent } from '@core/components/not-found/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'main', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'main', redirectTo: 'home', pathMatch: 'full'},
   { path: 'login', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'home', loadChildren: () => import('./youtube/youtube.module').then(m => m.YouTubeModule) },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadChildren: () => import('./youtube/youtube.module').then(m => m.YouTubeModule),
+    canLoad: [CanLeaveAuthGuard],
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -46,11 +46,6 @@ export class LoginService {
 
   public getLoginCredentialsFromLS(): void {
     this.credentials = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY));
-    if (!this.credentials) {
-      this.router.navigate(['login']);
-      return;
-    }
-
-    this.isUserLogged = true;
+    if (this.credentials) {  this.isUserLogged = true;  }
   }
 }
