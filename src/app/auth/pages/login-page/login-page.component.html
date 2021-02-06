@@ -62,19 +62,22 @@
       mat-button
       appHighlightButton
       [disabled]="loginForm.invalid"
+      *ngIf="!isUserLogged; else logOutButton"
     >
       Login
     </button>
-    <button
-      class="button shadow form-button login-form-button main-bg-color"
-      type="button"
-      aria-label="Logout"
-      mat-button
-      [disabled]="!isUserLogged"
-      appHighlightButton
-      (click)="logOut()"
-    >
-      Logout
-    </button>
   </div>
 </form>
+
+<ng-template #logOutButton>
+  <button
+    class="button shadow form-button login-form-button main-bg-color"
+    type="button"
+    aria-label="Logout"
+    mat-button
+    appHighlightButton
+    (click)="logOut()"
+  >
+    Logout
+  </button>
+</ng-template>

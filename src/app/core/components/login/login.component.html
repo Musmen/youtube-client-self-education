@@ -1,5 +1,5 @@
 <span class="user-login">
-  {{ userLogin | titlecase }}
+  {{ loggedUserLogin | slice: 0: 10 | titlecase }}
 </span>
 <img class="user-avatar shadow" src="../../../assets/images/avatar-default.png">
 <button
@@ -7,9 +7,23 @@
     type="button"
     aria-label="Logout"
     mat-button
-    [disabled]="!isUserLogged"
     appHighlightButton
     (click)="logOut()"
+    *ngIf="isUserLogged; else logInButton"
   >
     Logout
 </button>
+
+<ng-template #logInButton>
+  <button
+      class="button shadow form-button button-login main-bg-color"
+      type="button"
+      aria-label="Login"
+      mat-button
+      appHighlightButton
+      (click)="logIn()"
+      [disabled]="!isCredentialsValid"
+    >
+      Login
+  </button>
+</ng-template>
