@@ -11,12 +11,23 @@ HEX_BASE = 16;
 @Injectable()
 export class LoginService {
   public loggedUserLogin: string;
+
   public credentials$: BehaviorSubject<Credentials>;
   public isCredentialsValid$: BehaviorSubject<boolean>;
   public isUserLogged$: BehaviorSubject<boolean>;
 
+  public get isUserLogged(): boolean {
+    return this.isUserLogged$.getValue();
+  }
+  public get isCredentialsValid(): boolean {
+    return this.isCredentialsValid$.getValue();
+  }
+  public get credentials(): Credentials {
+    return this.credentials$.getValue() || EMPTY_CREDENTIALS;
+  }
+
   constructor(private router: Router) {
-    this.loggedUserLogin = '';
+    this.loggedUserLogin = DEFAULT_USER_LOGIN;
 
     this.credentials$ = new BehaviorSubject<Credentials>(EMPTY_CREDENTIALS);
     this.isCredentialsValid$ = new BehaviorSubject<boolean>(false);
@@ -35,7 +46,7 @@ export class LoginService {
   }
 
   private toggleUserLoggedState(): void {
-    this.isUserLogged$.next(!this.isUserLogged$.getValue());
+    this.isUserLogged$.next(!this.isUserLogged);
   }
 
   private encryptToken(credentials: Credentials): string {
@@ -50,20 +61,20 @@ export class LoginService {
     this.router.navigate(['home']);
   }
 
-  public logIn(credentials: Credentials = this.credentials$.getValue()): void {
-    if (this.isUserLogged$.getValue()) { this.logOut(); }
+  public logIn(credentials: Credentials = this.credentials): void {
+    if (this.isUserLogged) { this.logOut(); }
 
     const token: string = this.encryptToken(credentials);
     this.credentials$.next({...credentials, token});
     this.toggleUserLoggedState();
-    localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(this.credentials$.getValue()));
+    localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(this.credentials));
     this.loggedUserLogin = credentials.login;
 
     this.goToMainPage();
   }
 
   public logOut(): void {
-    if (!this.isUserLogged$.getValue()) { return; }
+    if (!this.isUserLogged) { return; }
 
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
     this.loggedUserLogin = DEFAULT_USER_LOGIN;
@@ -77,7 +88,7 @@ export class LoginService {
 
     if (credentials) {
       this.isUserLogged$.next(true);
-      this.loggedUserLogin = credentials.login;
+      this.loggedUserLogin = credentials.login || DEFAULT_USER_LOGIN;
     }
   }
 }
