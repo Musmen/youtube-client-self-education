@@ -1,28 +1,51 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
-import { YOU_TUBE_RESPONSE } from './mock-response/mock-response';
 import { ResponseList, ResponseItem } from '@youtube/models/response.model';
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
-
-import { ERROR_MESSAGES } from '@common/constants';
+import { BASE_URL, HTTP_GET_CONFIG } from './common/youtube.http.config';
+import { ERROR_MESSAGES, SEARCH_REQUEST_MIN_LENGTH } from '@common/constants';
 
 @Injectable()
 export class YouTubeService {
-  private searchResults: ResponseList = null;
-  public searchResultsCards: SearchResultCard[] = null;
+  public searchResultsCards$: BehaviorSubject<SearchResultCard[]>;
 
   public searchError: boolean = false;
   public searchErrorMessage: string = ERROR_MESSAGES.SEARCH_REQUEST;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.searchResultsCards$ = new BehaviorSubject<SearchResultCard[]>(null);
+  }
 
   private checkSearchRequest(searchRequest: string): boolean {
-    this.searchError = !Boolean(searchRequest);
+    this.searchError = !Boolean(searchRequest)
+      || Boolean(searchRequest.length < SEARCH_REQUEST_MIN_LENGTH);
     return !this.searchError;
   }
 
-  private fetchSearchResults(): ResponseList  {
-    return YOU_TUBE_RESPONSE;
+  private fetchSearchResults(searchRequest: string): void {
+    this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.SEARCH.URL}`, {
+      params: {
+        ...HTTP_GET_CONFIG.SEARCH.PARAMS,
+        q: searchRequest,
+      },
+    }).subscribe((responce: ResponseList) => {
+      const idList: string[] = responce.items.map(
+        (responseItem: ResponseItem) => responseItem.id.videoId
+      );
+      debugger;
+      this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.VIDEOS.URL}`, {
+        params: {
+          ...HTTP_GET_CONFIG.VIDEOS.PARAMS,
+          id: idList,
+        },
+      })
+      .subscribe((searchResults: ResponseList) => {
+        console.log(searchResults);
+        this.searchResultsCards$.next(this.parseSearchResults(searchResults));
+      });
+    });
   }
 
   private parseSearchResults(searchResults: ResponseList): SearchResultCard[] {
@@ -45,13 +68,14 @@ export class YouTubeService {
 
   public getSearchResults(searchRequest: string): void {
     if (this.checkSearchRequest(searchRequest)) {
-      this.searchResults = this.fetchSearchResults();
-      this.searchResultsCards = this.parseSearchResults(this.searchResults);
+      this.fetchSearchResults(searchRequest);
     }
   }
 
   public getSearchResultCardById(id: string): SearchResultCard {
-    return this.searchResultsCards && this.searchResultsCards
-      .find((card) => card.id === id);
+    const cards: SearchResultCard[] = this.searchResultsCards$.getValue();
+    return cards
+      ? cards.find((card) => card.id === id)
+      : null;
   }
 }

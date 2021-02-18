@@ -1,15 +1,11 @@
 @import './src/scss/mixins.scss';
 
-.upper-block {
+.top-block {
   position: relative;
 
   @include flex-centered;
-
-  width: 100%;
+  
+  padding: 10px;
 
   background-color: #d3d3d3;
-
-  * {
-   margin: 10px;
-  }
 }

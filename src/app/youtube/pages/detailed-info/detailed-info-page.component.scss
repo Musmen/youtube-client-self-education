@@ -30,7 +30,9 @@
 }
 
 .poster-wrapper {
+  box-sizing: border-box;
   width: 60%;
+  min-width: 700px;
 
   border-bottom-left-radius: 5px;
 
@@ -42,8 +44,10 @@
 .description-wrapper {
   display: flex;
   flex-direction: column;
-
+  
+  box-sizing: border-box;
   width: 40%;
+  min-width: 400px;
   padding: 0 34px;
 
   color: #828282;

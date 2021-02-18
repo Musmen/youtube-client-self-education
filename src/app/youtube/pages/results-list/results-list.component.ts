@@ -18,7 +18,7 @@ export class ResultsListComponent {
   ) { }
 
   public get searchResultsCards(): SearchResultCard[] {
-    return this.youTubeService.searchResultsCards;
+    return this.youTubeService.searchResultsCards$.getValue();
   }
 
   public get searchError(): boolean {

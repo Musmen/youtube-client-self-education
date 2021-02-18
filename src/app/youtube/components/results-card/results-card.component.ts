@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SearchResultCard } from '@youtube/models/searchResultCard.model';
 
 @Component({
   selector: 'app-results-card',

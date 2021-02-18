@@ -11,7 +11,10 @@ export interface ResponseList {
 export interface ResponseItem {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    kind: string,
+    videoId: string,
+  };
   snippet: {
     publishedAt: string,
     channelId: string,

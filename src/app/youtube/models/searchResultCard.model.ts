@@ -1,5 +1,8 @@
 export interface SearchResultCard {
-  id: number | string;
+  id: string | {
+    kind: string,
+    videoId: string,
+  };
   posterUrl: string;
   views: number | string;
   likes: number | string;

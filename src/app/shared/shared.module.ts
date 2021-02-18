@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,10 +28,12 @@ const angularMaterialModules = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ...angularMaterialModules,
   ],
   exports: [
     FormsModule,
+    ReactiveFormsModule,
     ...angularMaterialModules,
     ErrorMessageComponent,
     HighlightButtonDirective,

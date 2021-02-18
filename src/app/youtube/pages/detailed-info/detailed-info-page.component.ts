@@ -23,6 +23,9 @@ export class DetailedInfoPageComponent implements OnInit {
     if (!selectedCardId) { return; }
 
     this.infoCard = this.youTubeService.getSearchResultCardById(selectedCardId);
+    if (!this.infoCard) {
+      this.router.navigate(['home']);
+    }
   }
 
   public goBack(): void {

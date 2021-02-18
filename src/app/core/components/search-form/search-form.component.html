@@ -1,32 +1,22 @@
-<form class="search-form" name="search-form" (submit)="searchFormSubmit()">
+<form class="search-form" name="search-form">
   <label class="form-input-label">
     <input
       class="form-input search-form-input"
       type="text"
       name="search-form-input"
       placeholder="What are you want to find out?"
-      [(ngModel)]="searchRequest"
       autocomplete="off"
+      [formControl]="searchRequest"
     >
     <button
       class="form-clear-button"
       type="button"
       aria-label="Clear search request"
       mat-button
-      *ngIf="searchRequest"
-      (click)="searchRequest=''"
+      *ngIf="searchRequest.value"
+      (click)="searchRequest.setValue('')"
     >
       <mat-icon>clear</mat-icon>
     </button>
   </label>
-
-  <button
-    class="shadow form-button main-bg-color search-form-button"
-    type="submit"
-    aria-label="Start searching"
-    mat-button
-    appHighlightButton
-  >
-    search
-  </button>
 </form>

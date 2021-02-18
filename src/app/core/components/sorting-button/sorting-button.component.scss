@@ -5,5 +5,8 @@
   color: white;
   line-height: 36px;
 
-  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }

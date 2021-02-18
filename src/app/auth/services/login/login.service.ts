@@ -35,6 +35,8 @@ export class LoginService {
 
     this.checkIsCredentialsValid = this.checkIsCredentialsValid.bind(this);
     this.credentials$.subscribe(this.checkIsCredentialsValid);
+
+    this.getLoginCredentialsFromLS();
   }
 
   private checkIsCredentialsValid(credentials: Credentials): void {
@@ -79,6 +81,7 @@ export class LoginService {
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
     this.loggedUserLogin = DEFAULT_USER_LOGIN;
     this.toggleUserLoggedState();
+
     this.goToLoginPage();
   }
 
