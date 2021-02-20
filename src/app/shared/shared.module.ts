@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 import { HighlightButtonDirective } from './directives/highlight-button.directive';
 
@@ -23,6 +24,7 @@ const angularMaterialModules = [
 @NgModule({
   declarations: [
     ErrorMessageComponent,
+    SpinnerComponent,
     HighlightButtonDirective,
   ],
   imports: [
@@ -36,6 +38,7 @@ const angularMaterialModules = [
     ReactiveFormsModule,
     ...angularMaterialModules,
     ErrorMessageComponent,
+    SpinnerComponent,
     HighlightButtonDirective,
   ]
 })

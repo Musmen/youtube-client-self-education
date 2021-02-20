@@ -18,11 +18,11 @@ import { SortPipe } from './pipes/sort/sort.pipe';
   declarations: [
     ResultsListComponent,
     ResultsCardComponent,
+    StatisticsComponent,
+    DetailedInfoPageComponent,
     ColorizerByDateDirective,
     FilterByKeyWordsPipe,
     SortPipe,
-    DetailedInfoPageComponent,
-    StatisticsComponent,
   ],
   imports: [
     CommonModule,

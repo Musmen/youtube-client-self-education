@@ -14,6 +14,7 @@ export class YouTubeService implements OnDestroy {
 
   public searchResultsCards$: BehaviorSubject<SearchResultCard[]>;
 
+  public isLoading: boolean = false;
   public searchError: boolean = false;
   public searchErrorMessage: string = ERROR_MESSAGES.SEARCH_REQUEST;
 
@@ -52,6 +53,8 @@ export class YouTubeService implements OnDestroy {
   }
 
   private fetchSearchResultsWithStatistics(searchRequest: string): void {
+    this.isLoading = true;
+
     const subscription: Subscription = this.fetchSearchResults(searchRequest)
       .pipe(
         switchMap((responce: ResponseList) => {
@@ -69,7 +72,8 @@ export class YouTubeService implements OnDestroy {
           this.searchResultsCards$.next(null);
           this.searchError = true;
           this.searchErrorMessage = `${ERROR_MESSAGES.SEARCH_RESPONCE}${searchRequest}`;
-        }
+        },
+        () => this.isLoading = false
       );
 
     this.subscriptions.push(subscription);

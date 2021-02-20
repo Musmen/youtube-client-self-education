@@ -21,6 +21,10 @@ export class ResultsListComponent {
     return this.youTubeService.searchResultsCards$.getValue();
   }
 
+  public get isLoading(): boolean {
+    return this.youTubeService.isLoading;
+  }
+
   public get searchError(): boolean {
     return this.youTubeService.searchError;
   }

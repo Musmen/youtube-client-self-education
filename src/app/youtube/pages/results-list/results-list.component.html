@@ -1,15 +1,21 @@
-<ng-container *ngIf="!searchError; else errorMessageTemplate">
-  <ul class="search-results-list none-style centralizer" *ngIf="searchResultsCards">
-    <li class="search-results-item"
-      *ngFor="let searchResultCard of searchResultsCards
-        | filterByKeyWords: filteringRequest
-        | sort: sortingSettings"
-    >
-      <app-results-card [searchResultCard]="searchResultCard"></app-results-card>
-    </li>
-  </ul>
+<ng-container *ngIf="!isLoading; else spinner">
+  <ng-container *ngIf="!searchError; else errorMessageTemplate">
+    <ul class="search-results-list none-style centralizer" *ngIf="searchResultsCards">
+      <li class="search-results-item"
+        *ngFor="let searchResultCard of searchResultsCards
+          | filterByKeyWords: filteringRequest
+          | sort: sortingSettings"
+      >
+        <app-results-card [searchResultCard]="searchResultCard"></app-results-card>
+      </li>
+    </ul>
+  </ng-container>
 </ng-container>
 
 <ng-template #errorMessageTemplate>
   <app-error-message [errorMessage]="searchErrorMessage"></app-error-message>
+</ng-template>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
 </ng-template>
