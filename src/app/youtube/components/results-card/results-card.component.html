@@ -5,13 +5,27 @@
 
   <h2 class="search-card__title">{{ searchResultCard.title }}</h2>
 
-  <button
-    class="button shadow search-card__button_more main-bg-color"
-    aria-label="Additional information"
-    mat-button
-    (click)="goToDetailedInfoPage()"
-    appHighlightButton
-  >
-    more...
-  </button>
+  <div class="search-card-buttons">
+    <button
+      class="button shadow search-card__button_more main-bg-color"
+      aria-label="Additional information"
+      mat-button
+      (click)="goToDetailedInfoPage()"
+      appHighlightButton
+    >
+      more...
+    </button>
+    <button
+      class="button shadow search-card__button_watch main-bg-color"
+      aria-label="Watch video"
+      mat-button
+      appHighlightButton
+    >
+      <a class="search-card__button__link" 
+        [href]="'https://www.youtube.com/watch?v=' + searchResultCard.id" 
+        target="_blank">
+        watch
+      </a>
+    </button>
+  </div>
 </div>

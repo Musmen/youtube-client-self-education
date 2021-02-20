@@ -27,15 +27,31 @@
   margin-bottom: 20px;
 }
 
-.search-card__button_more {
+.search-card-buttons {
   position: absolute;
   bottom: 10px;
 
-  width: 120px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search-card__button_more,
+.search-card__button_watch {
+  width: 100px;
   height: 32px;
 
   color: #ffffff;
   line-height: 32px;
+}
+
+.search-card__button_more {
+  margin-right: 10px;
+}
+
+.search-card__button__link {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .search-card__title {
