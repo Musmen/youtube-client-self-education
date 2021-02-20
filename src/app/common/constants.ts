@@ -42,6 +42,7 @@ export enum COLOR_BY_POSTDATE {
 
 export enum ERROR_MESSAGES {
   SEARCH_REQUEST = 'Please, enter valid search request',
+  SEARCH_RESPONCE = 'No valid server responce for request: ',
   NOT_FOUND_PAGE = 'Sorry, something went wrong...',
 }
 

@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, throwError } from 'rxjs';
+import { catchError, switchMap, take } from 'rxjs/operators';
 
 import { ResponseList, ResponseItem } from '@youtube/models/response.model';
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
@@ -18,44 +19,60 @@ export class YouTubeService implements OnDestroy {
 
   constructor(private http: HttpClient) {
     this.subscriptions = [];
-    this.fetchSearchResultsWithStatistics = this.fetchSearchResultsWithStatistics.bind(this);
-
     this.searchResultsCards$ = new BehaviorSubject<SearchResultCard[]>(null);
   }
 
   private checkSearchRequest(searchRequest: string): boolean {
     this.searchError = !Boolean(searchRequest)
       || Boolean(searchRequest.length < SEARCH_REQUEST_MIN_LENGTH);
+    if (this.searchError) { this.searchErrorMessage = ERROR_MESSAGES.SEARCH_REQUEST; }
     return !this.searchError;
   }
 
-  private fetchSearchResults(searchRequest: string): void {
-    const subscription: Subscription = this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.SEARCH.URL}`, {
+  private fetchSearchResults(searchRequest: string): Observable<Object> {
+    return this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.SEARCH.URL}`, {
       params: {
         ...HTTP_GET_CONFIG.SEARCH.PARAMS,
         q: searchRequest,
       }
-    }).subscribe(this.fetchSearchResultsWithStatistics);
-
-    this.subscriptions.push(subscription);
+    });
   }
 
-  private fetchSearchResultsWithStatistics(responce: ResponseList): void {
-    const subscription: Subscription = this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.VIDEOS.URL}`, {
+  private fetchVideoIdListWithStatistics(videoIdList: string[]): Observable<Object> {
+    return this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.VIDEOS.URL}`, {
       params: {
         ...HTTP_GET_CONFIG.VIDEOS.PARAMS,
-        id: this.getVideoIdListFromResponce(responce),
+        id: videoIdList,
       },
-    })
-    .subscribe((searchResults: ResponseList) => {
-      this.searchResultsCards$.next(this.parseSearchResults(searchResults));
     });
-
-    this.subscriptions.push(subscription);
   }
 
   private getVideoIdListFromResponce(responce: ResponseList): string[] {
     return responce.items.map((responseItem: ResponseItem) => responseItem.id.videoId);
+  }
+
+  private fetchSearchResultsWithStatistics(searchRequest: string): void {
+    const subscription: Subscription = this.fetchSearchResults(searchRequest)
+      .pipe(
+        switchMap((responce: ResponseList) => {
+          const videoIdList: string[] = this.getVideoIdListFromResponce(responce);
+          return this.fetchVideoIdListWithStatistics(videoIdList);
+        }),
+        take(1),
+        catchError(error => throwError(error))
+      )
+      .subscribe(
+        (searchResults: ResponseList) => {
+          this.searchResultsCards$.next(this.parseSearchResults(searchResults));
+        },
+        () => {
+          this.searchResultsCards$.next(null);
+          this.searchError = true;
+          this.searchErrorMessage = `${ERROR_MESSAGES.SEARCH_RESPONCE}${searchRequest}`;
+        }
+      );
+
+    this.subscriptions.push(subscription);
   }
 
   private parseSearchResults(searchResults: ResponseList): SearchResultCard[] {
@@ -78,7 +95,7 @@ export class YouTubeService implements OnDestroy {
 
   public getSearchResults(searchRequest: string): void {
     if (this.checkSearchRequest(searchRequest)) {
-      this.fetchSearchResults(searchRequest);
+      this.fetchSearchResultsWithStatistics(searchRequest);
     }
   }
 
@@ -90,8 +107,8 @@ export class YouTubeService implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription: Subscription) => {
-      subscription.unsubscribe();
-    });
+    this.subscriptions.forEach(
+      (subscription: Subscription) => subscription.unsubscribe()
+    );
   }
 }
