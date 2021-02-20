@@ -5,7 +5,7 @@ import { catchError, switchMap, take } from 'rxjs/operators';
 
 import { ResponseList, ResponseItem } from '@youtube/models/response.model';
 import { SearchResultCard } from '@youtube/models/searchResultCard.model';
-import { BASE_URL, HTTP_GET_CONFIG } from './common/youtube.http.config';
+import { HTTP_GET_CONFIG } from './common/youtube.http.config';
 import { ERROR_MESSAGES, SEARCH_REQUEST_MIN_LENGTH } from '@common/constants';
 
 @Injectable()
@@ -23,6 +23,17 @@ export class YouTubeService implements OnDestroy {
     this.searchResultsCards$ = new BehaviorSubject<SearchResultCard[]>(null);
   }
 
+  private toggleLoadingState(): void {
+    this.isLoading = !this.isLoading;
+  }
+
+  private setResponseErrorState(searchRequest: string): void {
+    this.searchResultsCards$.next(null);
+    this.searchError = true;
+    this.searchErrorMessage = `${ERROR_MESSAGES.SEARCH_RESPONCE}${searchRequest}`;
+    this.toggleLoadingState();
+  }
+
   private checkSearchRequest(searchRequest: string): boolean {
     this.searchError = !Boolean(searchRequest)
       || Boolean(searchRequest.length < SEARCH_REQUEST_MIN_LENGTH);
@@ -31,7 +42,7 @@ export class YouTubeService implements OnDestroy {
   }
 
   private fetchSearchResults(searchRequest: string): Observable<Object> {
-    return this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.SEARCH.URL}`, {
+    return this.http.get(HTTP_GET_CONFIG.SEARCH.URL, {
       params: {
         ...HTTP_GET_CONFIG.SEARCH.PARAMS,
         q: searchRequest,
@@ -40,7 +51,7 @@ export class YouTubeService implements OnDestroy {
   }
 
   private fetchVideoIdListWithStatistics(videoIdList: string[]): Observable<Object> {
-    return this.http.get(`${BASE_URL}${HTTP_GET_CONFIG.VIDEOS.URL}`, {
+    return this.http.get(HTTP_GET_CONFIG.VIDEOS.URL, {
       params: {
         ...HTTP_GET_CONFIG.VIDEOS.PARAMS,
         id: videoIdList,
@@ -53,7 +64,7 @@ export class YouTubeService implements OnDestroy {
   }
 
   private fetchSearchResultsWithStatistics(searchRequest: string): void {
-    this.isLoading = true;
+    this.toggleLoadingState();
 
     const subscription: Subscription = this.fetchSearchResults(searchRequest)
       .pipe(
@@ -67,13 +78,9 @@ export class YouTubeService implements OnDestroy {
       .subscribe(
         (searchResults: ResponseList) => {
           this.searchResultsCards$.next(this.parseSearchResults(searchResults));
+          this.toggleLoadingState();
         },
-        () => {
-          this.searchResultsCards$.next(null);
-          this.searchError = true;
-          this.searchErrorMessage = `${ERROR_MESSAGES.SEARCH_RESPONCE}${searchRequest}`;
-        },
-        () => this.isLoading = false
+        () => this.setResponseErrorState(searchRequest),
       );
 
     this.subscriptions.push(subscription);

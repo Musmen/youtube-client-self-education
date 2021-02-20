@@ -1,5 +1,11 @@
 import { Credentials } from '@auth/models/credentials.model';
 
+export let YOUTUBE_KEY: string;
+YOUTUBE_KEY = 'AIzaSyAI-D1P0OH_z7m5_RzSiQgWz22lmXZ8ZAw';
+
+export let BASE_URL: string;
+BASE_URL = 'https://youtube.googleapis.com/youtube/v3/';
+
 export let DEFAULT_USER_LOGIN: string;
 DEFAULT_USER_LOGIN = 'Your Name';
 
